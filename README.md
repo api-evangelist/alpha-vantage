@@ -9,15 +9,14 @@ Alpha Vantage provides realtime and historical financial market data through a s
 - **Position:** Consumer 
 - **Access:** 3rd-Party 
 
-## Tags
+## Tags:
 
-- Financial
-- Market Data
+ - Financial, Market Data
 
 ## Timestamps
 
-- **Created:** 2024-11-07T00:00:00.000Z 
-- **Modified:** 2024-12-10 
+- **Created:** 2024-11-07 
+- **Modified:** 2024-12-22 
 
 ## APIs
 
@@ -26,13 +25,19 @@ API Documentation for Alpha Vantage. Alpha Vantage offers free JSON APIs for rea
 
 **Human URL:** [https://www.alphavantage.co](https://www.alphavantage.co)
 
-#### Tags
 
-- API
+#### Tags:
+
+ - API
 
 #### Properties
 
 - [Documentation](https://www.alphavantage.co)
+
+## Common Properties
+
+- [Portal](https://www.alphavantage.co/)
+- [Support](https://www.alphavantage.co/support/#support)
 
 ## Maintainers
 
