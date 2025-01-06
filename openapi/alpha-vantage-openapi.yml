@@ -1,0 +1,36 @@
+openapi: 3.0.0
+info:
+  title: Alpha Vantage
+  description: >-
+    Alpha Vantage APIs are grouped into four categories: (1) Stock Time Series
+    Data, (2) Physical and Digital/Crypto Currencies (e.g., Bitcoin), (3) Stock
+    Technical Indicators, and (4) Sector Performances. All APIs are realtime:
+    the latest data points are derived from the current trading day. 
+
+
+    Contact Support:
+     Name: No Contact
+     Email: email@example.com
+  version: 1.0.0
+servers:
+  - url: http://{{baseurl}}
+paths:
+  /query:
+    get:
+      tags:
+        - default
+      summary: Sector Performance
+      description: >-
+        This API returns the realtime and historical sector performances
+        calculated from S&P500 incumbents.
+      parameters:
+        - name: function
+          in: query
+          schema:
+            type: string
+          example: SECTOR
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
