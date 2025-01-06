@@ -10,6 +10,8 @@ apis:
     properties:
       - url: https://www.alphavantage.co
         type: Documentation
+      - type: OpenAPI
+        url: properties/alpha-vantage-openapi.yml
     description: >-
       API Documentation for Alpha Vantage. Alpha Vantage offers free JSON APIs
       for realtime and historical stock market data & options data with ...
