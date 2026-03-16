@@ -47,7 +47,7 @@ common:
     type: Support
     description: The support page for the API.
 created: '2024-11-07T00:00:00.000Z'
-modified: '2025-01-05'
+modified: '2026-03-16'
 position: Consumer
 description: >-
   Alpha Vantage is a financial data platform that provides real-time and
@@ -60,5 +60,5 @@ description: >-
   investment decisions.
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'
