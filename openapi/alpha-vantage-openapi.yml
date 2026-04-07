@@ -20,8 +20,7 @@ servers:
 paths:
   /query:
     get:
-      tags:
-        - default
+      tags: []
       summary: Alpha Vantage Sector Performance
       description: >-
         This API returns the realtime and historical sector performances
