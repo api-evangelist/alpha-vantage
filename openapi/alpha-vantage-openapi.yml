@@ -22,7 +22,7 @@ paths:
     get:
       tags:
         - default
-      summary: Sector Performance
+      summary: Alpha Vantage Sector Performance
       description: >-
         This API returns the realtime and historical sector performances
         calculated from S&P500 incumbents.
