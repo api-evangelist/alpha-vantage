@@ -1,0 +1,129 @@
+rules:
+  alpha-vantage-operation-summary-prefix:
+    description: All operation summaries must start with "Alpha Vantage"
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Alpha Vantage"
+
+  alpha-vantage-operation-tags:
+    description: All operations must have at least one tag
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: tags
+      function: truthy
+
+  alpha-vantage-operation-id:
+    description: All operations must have an operationId
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: operationId
+      function: truthy
+
+  alpha-vantage-operation-description:
+    description: All operations must have a description
+    severity: warn
+    given: "$.paths[*][*]"
+    then:
+      field: description
+      function: truthy
+
+  alpha-vantage-apikey-param:
+    description: All operations must have the apikey parameter
+    severity: error
+    given: "$.paths[*][get].parameters[*]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+
+  alpha-vantage-function-param:
+    description: All query operations must have the function parameter
+    severity: error
+    given: "$.paths[/query][get].parameters[?(@.name == 'function')]"
+    then:
+      function: truthy
+
+  alpha-vantage-function-enum:
+    description: The function parameter must have an enum of allowed values
+    severity: warn
+    given: "$.paths[/query][get].parameters[?(@.name == 'function')].schema"
+    then:
+      field: enum
+      function: truthy
+
+  alpha-vantage-apikey-security-scheme:
+    description: API must define the ApiKey security scheme
+    severity: error
+    given: "$.components.securitySchemes"
+    then:
+      field: ApiKey
+      function: truthy
+
+  alpha-vantage-apikey-in-query:
+    description: ApiKey must be passed as a query parameter
+    severity: error
+    given: "$.components.securitySchemes.ApiKey"
+    then:
+      field: in
+      function: enumeration
+      functionOptions:
+        values:
+          - query
+
+  alpha-vantage-schema-title:
+    description: All schemas must have a title
+    severity: warn
+    given: "$.components.schemas[*]"
+    then:
+      field: title
+      function: truthy
+
+  alpha-vantage-schema-description:
+    description: All schemas must have a description
+    severity: warn
+    given: "$.components.schemas[*]"
+    then:
+      field: description
+      function: truthy
+
+  alpha-vantage-property-description:
+    description: Schema properties should have descriptions
+    severity: warn
+    given: "$.components.schemas[*].properties[*]"
+    then:
+      field: description
+      function: truthy
+
+  alpha-vantage-200-response:
+    description: All operations must document a 200 success response
+    severity: error
+    given: "$.paths[*][*].responses"
+    then:
+      field: "200"
+      function: truthy
+
+  alpha-vantage-microcks-operation:
+    description: All operations should have x-microcks-operation extension
+    severity: info
+    given: "$.paths[*][*]"
+    then:
+      field: x-microcks-operation
+      function: truthy
+
+  alpha-vantage-server-https:
+    description: API server must use HTTPS
+    severity: error
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://www.alphavantage.co/structures/alpha-vantage-company_overview-structure.json",
+  "title": "CompanyOverview",
+  "type": "object",
+  "description": "Company fundamental data including financial ratios and business description",
+  "properties": {
+    "Symbol": {
+      "type": "xs:string",
+      "description": "Stock ticker symbol"
+    },
+    "Name": {
+      "type": "xs:string",
+      "description": "Company name"
+    },
+    "Description": {
+      "type": "xs:string",
+      "description": "Company business description"
+    },
+    "Exchange": {
+      "type": "xs:string",
+      "description": "Stock exchange listing"
+    },
+    "Currency": {
+      "type": "xs:string",
+      "description": "Trading currency code"
+    },
+    "Country": {
+      "type": "xs:string",
+      "description": "Country of incorporation"
+    },
+    "Sector": {
+      "type": "xs:string",
+      "description": "Business sector"
+    },
+    "Industry": {
+      "type": "xs:string",
+      "description": "Industry classification"
+    },
+    "MarketCapitalization": {
+      "type": "xs:string",
+      "description": "Total market capitalization in USD"
+    },
+    "PERatio": {
+      "type": "xs:string",
+      "description": "Price-to-earnings ratio"
+    },
+    "EPS": {
+      "type": "xs:string",
+      "description": "Earnings per share (TTM)"
+    },
+    "DividendYield": {
+      "type": "xs:string",
+      "description": "Annual dividend yield as decimal"
+    },
+    "Beta": {
+      "type": "xs:string",
+      "description": "Beta coefficient relative to S&P 500"
+    }
+  }
+}

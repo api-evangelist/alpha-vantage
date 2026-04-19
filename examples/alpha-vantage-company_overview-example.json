@@ -1,0 +1,15 @@
+{
+  "Symbol": "IBM",
+  "Name": "International Business Machines",
+  "Description": "International Business Machines Corporation...",
+  "Exchange": "NYSE",
+  "Currency": "USD",
+  "Country": "USA",
+  "Sector": "Technology",
+  "Industry": "Information Technology Services",
+  "MarketCapitalization": "180000000000",
+  "PERatio": "22.50",
+  "EPS": "8.75",
+  "DividendYield": "0.0320",
+  "Beta": "0.85"
+}

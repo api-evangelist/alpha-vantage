@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://www.alphavantage.co/structures/alpha-vantage-news_article-structure.json",
+  "title": "NewsArticle",
+  "type": "object",
+  "description": "News article with sentiment analysis scores",
+  "properties": {
+    "title": {
+      "type": "xs:string",
+      "description": "Article headline"
+    },
+    "url": {
+      "type": "xs:string",
+      "description": "Article URL"
+    },
+    "timePublished": {
+      "type": "xs:string",
+      "description": "Publication timestamp in YYYYMMDDTHHMMSS format"
+    },
+    "overallSentimentScore": {
+      "type": "xs:decimal",
+      "description": "Sentiment score from -1 (bearish) to +1 (bullish)"
+    },
+    "overallSentimentLabel": {
+      "type": "xs:string",
+      "description": "Human-readable sentiment label"
+    }
+  }
+}

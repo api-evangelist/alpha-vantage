@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://www.alphavantage.co/structures/alpha-vantage-exchange_rate-structure.json",
+  "title": "ExchangeRate",
+  "type": "object",
+  "description": "Real-time currency exchange rate between two currencies",
+  "properties": {
+    "fromCurrencyCode": {
+      "type": "xs:string",
+      "description": "Source currency ISO code"
+    },
+    "fromCurrencyName": {
+      "type": "xs:string",
+      "description": "Source currency full name"
+    },
+    "toCurrencyCode": {
+      "type": "xs:string",
+      "description": "Destination currency ISO code"
+    },
+    "toCurrencyName": {
+      "type": "xs:string",
+      "description": "Destination currency full name"
+    },
+    "exchangeRate": {
+      "type": "xs:string",
+      "description": "Current exchange rate"
+    },
+    "lastRefreshed": {
+      "type": "xs:string",
+      "description": "Timestamp of last data refresh"
+    },
+    "timeZone": {
+      "type": "xs:string",
+      "description": "Time zone of the refresh timestamp"
+    },
+    "bidPrice": {
+      "type": "xs:string",
+      "description": "Current bid price"
+    },
+    "askPrice": {
+      "type": "xs:string",
+      "description": "Current ask price"
+    }
+  }
+}

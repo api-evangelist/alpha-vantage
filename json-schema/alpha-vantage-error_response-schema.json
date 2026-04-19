@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.alphavantage.co/schemas/alpha-vantage-error_response-schema.json",
+  "title": "ErrorResponse",
+  "type": "object",
+  "description": "Error or rate limit response from Alpha Vantage",
+  "properties": {
+    "Note": {
+      "type": "string",
+      "description": "API rate limit or usage note"
+    },
+    "Information": {
+      "type": "string",
+      "description": "Premium endpoint or invalid request information"
+    },
+    "Error Message": {
+      "type": "string",
+      "description": "Error message for invalid parameters"
+    }
+  }
+}

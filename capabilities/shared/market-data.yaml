@@ -1,0 +1,30 @@
+name: Market Data
+description: Shared capability for Alpha Vantage stock time series, quotes, and market overview data
+version: 1.0.0
+base_url: https://www.alphavantage.co
+auth:
+  type: api_key
+  param: apikey
+  location: query
+operations:
+  - id: queryTimeSeries
+    method: GET
+    path: /query
+    summary: Query stock time series data using function parameter routing
+    key_functions:
+      - TIME_SERIES_DAILY
+      - TIME_SERIES_INTRADAY
+      - TIME_SERIES_WEEKLY
+      - TIME_SERIES_MONTHLY
+      - GLOBAL_QUOTE
+      - SYMBOL_SEARCH
+      - OVERVIEW
+      - NEWS_SENTIMENT
+      - CURRENCY_EXCHANGE_RATE
+      - REAL_GDP
+      - RSI
+      - MACD
+      - SMA
+      - EMA
+rest_port: 8101
+mcp_port: 9101

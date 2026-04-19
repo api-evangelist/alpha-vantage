@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.alphavantage.co/schemas/alpha-vantage-api_response-schema.json",
+  "title": "ApiResponse",
+  "type": "object",
+  "description": "Generic Alpha Vantage API response containing Meta Data and time series or indicator data",
+  "properties": {
+    "Meta Data": {
+      "type": "object",
+      "description": "Metadata about the response including symbol, indicator, and refresh timestamps"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "fromCurrencyCode": "USD",
+  "fromCurrencyName": "United States Dollar",
+  "toCurrencyCode": "JPY",
+  "toCurrencyName": "Japanese Yen",
+  "exchangeRate": "154.850000",
+  "lastRefreshed": "2026-04-19 10:00:00",
+  "timeZone": "UTC",
+  "bidPrice": "154.845000",
+  "askPrice": "154.855000"
+}

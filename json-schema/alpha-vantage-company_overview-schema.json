@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.alphavantage.co/schemas/alpha-vantage-company_overview-schema.json",
+  "title": "CompanyOverview",
+  "type": "object",
+  "description": "Company fundamental data including financial ratios and business description",
+  "properties": {
+    "Symbol": {
+      "type": "string",
+      "description": "Stock ticker symbol"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Company name"
+    },
+    "Description": {
+      "type": "string",
+      "description": "Company business description"
+    },
+    "Exchange": {
+      "type": "string",
+      "description": "Stock exchange listing"
+    },
+    "Currency": {
+      "type": "string",
+      "description": "Trading currency code"
+    },
+    "Country": {
+      "type": "string",
+      "description": "Country of incorporation"
+    },
+    "Sector": {
+      "type": "string",
+      "description": "Business sector"
+    },
+    "Industry": {
+      "type": "string",
+      "description": "Industry classification"
+    },
+    "MarketCapitalization": {
+      "type": "string",
+      "description": "Total market capitalization in USD"
+    },
+    "PERatio": {
+      "type": "string",
+      "description": "Price-to-earnings ratio"
+    },
+    "EPS": {
+      "type": "string",
+      "description": "Earnings per share (TTM)"
+    },
+    "DividendYield": {
+      "type": "string",
+      "description": "Annual dividend yield as decimal"
+    },
+    "Beta": {
+      "type": "string",
+      "description": "Beta coefficient relative to S&P 500"
+    }
+  }
+}

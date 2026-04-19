@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.alphavantage.co/schemas/alpha-vantage-time_series_data-schema.json",
+  "title": "TimeSeriesData",
+  "type": "object",
+  "description": "Stock OHLCV time series data point",
+  "properties": {
+    "open": {
+      "type": "string",
+      "description": "Opening price for the period"
+    },
+    "high": {
+      "type": "string",
+      "description": "Highest price for the period"
+    },
+    "low": {
+      "type": "string",
+      "description": "Lowest price for the period"
+    },
+    "close": {
+      "type": "string",
+      "description": "Closing price for the period"
+    },
+    "volume": {
+      "type": "string",
+      "description": "Trading volume for the period"
+    }
+  }
+}

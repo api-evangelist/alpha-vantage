@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.alphavantage.co/schemas/alpha-vantage-economic_data_point-schema.json",
+  "title": "EconomicDataPoint",
+  "type": "object",
+  "description": "A single economic indicator data point",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of the data point"
+    },
+    "value": {
+      "type": "string",
+      "description": "Indicator value for the period"
+    }
+  }
+}

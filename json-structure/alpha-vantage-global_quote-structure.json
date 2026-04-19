@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://www.alphavantage.co/structures/alpha-vantage-global_quote-structure.json",
+  "title": "GlobalQuote",
+  "type": "object",
+  "description": "Latest real-time stock quote data",
+  "properties": {
+    "symbol": {
+      "type": "xs:string",
+      "description": "Stock ticker symbol"
+    },
+    "open": {
+      "type": "xs:string",
+      "description": "Opening price for the day"
+    },
+    "high": {
+      "type": "xs:string",
+      "description": "Intraday high price"
+    },
+    "low": {
+      "type": "xs:string",
+      "description": "Intraday low price"
+    },
+    "price": {
+      "type": "xs:string",
+      "description": "Latest trade price"
+    },
+    "volume": {
+      "type": "xs:string",
+      "description": "Volume of shares traded"
+    },
+    "latestTradingDay": {
+      "type": "xs:string",
+      "description": "Most recent trading day"
+    },
+    "previousClose": {
+      "type": "xs:string",
+      "description": "Previous day's closing price"
+    },
+    "change": {
+      "type": "xs:string",
+      "description": "Price change from previous close"
+    },
+    "changePercent": {
+      "type": "xs:string",
+      "description": "Percentage change from previous close"
+    }
+  }
+}

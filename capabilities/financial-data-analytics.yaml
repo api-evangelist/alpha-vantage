@@ -1,0 +1,86 @@
+name: Financial Data Analytics
+description: >-
+  Workflow capability composition for financial data research and analytics using
+  the Alpha Vantage API. Supports equity analysis, technical trading signals,
+  macro economic research, and news sentiment monitoring.
+version: 1.0.0
+capabilities:
+  - shared/market-data.yaml
+workflows:
+  - id: equity-research
+    name: Equity Research
+    description: Comprehensive equity research workflow combining price, fundamentals, and sentiment
+    steps:
+      - step: get-price-history
+        operation: TIME_SERIES_DAILY
+        description: Retrieve daily price history for the stock
+      - step: get-company-overview
+        operation: OVERVIEW
+        description: Get fundamental financial metrics and business description
+      - step: get-news-sentiment
+        operation: NEWS_SENTIMENT
+        description: Analyze recent news sentiment for the stock
+  - id: technical-analysis
+    name: Technical Analysis
+    description: Compute technical indicators for trading signal generation
+    steps:
+      - step: get-price-data
+        operation: TIME_SERIES_DAILY
+        description: Retrieve price data for indicator calculation
+      - step: compute-rsi
+        operation: RSI
+        description: Calculate Relative Strength Index (RSI)
+      - step: compute-macd
+        operation: MACD
+        description: Calculate MACD crossover signals
+      - step: compute-bollinger
+        operation: BBANDS
+        description: Calculate Bollinger Bands for volatility analysis
+  - id: macro-research
+    name: Macro Economic Research
+    description: Monitor macroeconomic indicators for investment context
+    steps:
+      - step: get-gdp
+        operation: REAL_GDP
+        description: Retrieve Real GDP growth data
+      - step: get-unemployment
+        operation: UNEMPLOYMENT
+        description: Get unemployment rate data
+      - step: get-cpi
+        operation: CPI
+        description: Retrieve Consumer Price Index inflation data
+tools:
+  - id: get-daily-prices
+    capability: market-data
+    function: TIME_SERIES_DAILY
+    description: Get daily OHLCV stock price data
+  - id: get-quote
+    capability: market-data
+    function: GLOBAL_QUOTE
+    description: Get latest real-time stock price quote
+  - id: search-symbol
+    capability: market-data
+    function: SYMBOL_SEARCH
+    description: Search for stock symbols by company name
+  - id: get-company-fundamentals
+    capability: market-data
+    function: OVERVIEW
+    description: Get company financial ratios and business overview
+  - id: get-news-sentiment
+    capability: market-data
+    function: NEWS_SENTIMENT
+    description: Get news articles with sentiment scores for a stock
+  - id: get-rsi
+    capability: market-data
+    function: RSI
+    description: Calculate Relative Strength Index for a stock
+  - id: get-exchange-rate
+    capability: market-data
+    function: CURRENCY_EXCHANGE_RATE
+    description: Get real-time currency exchange rate
+  - id: get-gdp-data
+    capability: market-data
+    function: REAL_GDP
+    description: Retrieve US Real GDP economic data
+rest_port: 8080
+mcp_port: 9090

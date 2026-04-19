@@ -1,38 +1,483 @@
-openapi: 3.0.0
+openapi: 3.0.3
 info:
-  title: Alpha Vantage
+  title: Alpha Vantage API
   description: >-
-    Alpha Vantage is a financial technology company that provides API access to
-    stock market data, allowing developers and investors to easily access and
-    integrate real-time and historical financial information into their
-    applications and trading strategies. With a vast array of financial data
-    including stock prices, technical indicators, and fundamental analysis
-    metrics, Alpha Vantage enables users to make informed investment decisions
-    and enhance their market analysis capabilities. The platform also offers
-    advanced features such as machine learning algorithms and data visualization
-    tools to help users optimize their trading strategies and investment
-    portfolios. Overall, Alpha Vantage empowers individuals and institutions to
-    harness the power of data-driven insights and stay ahead in the fast-paced
-    world of finance.
+    Alpha Vantage is a financial data platform providing real-time and historical
+    market data for stocks, options, cryptocurrencies, forex, commodities, and
+    economic indicators. The API supports 50+ technical indicators, fundamental
+    data, Alpha Intelligence sentiment analysis, and earnings data, all accessed
+    through a single query endpoint using function-based routing.
   version: 1.0.0
+  contact:
+    name: Alpha Vantage Support
+    url: https://www.alphavantage.co/support/
+  x-generated-from: documentation
 servers:
-  - url: http://{{baseurl}}
+  - url: https://www.alphavantage.co
+    description: Alpha Vantage API server
+security:
+  - ApiKey: []
+tags:
+  - name: Stock Time Series
+    description: Intraday, daily, weekly, and monthly stock price and volume data
+  - name: Market Overview
+    description: Global quotes, bulk quotes, symbol search, and market status
+  - name: Fundamental Data
+    description: Company financials, earnings, dividends, and ETF data
+  - name: Alpha Intelligence
+    description: News sentiment, earnings transcripts, and institutional data
+  - name: Technical Indicators
+    description: SMA, EMA, MACD, RSI, Bollinger Bands, and 50+ other indicators
+  - name: Forex and Crypto
+    description: Currency exchange rates and cryptocurrency data
+  - name: Economic Indicators
+    description: GDP, unemployment, CPI, treasury yields, and other macro data
 paths:
   /query:
     get:
-      tags: []
-      summary: Alpha Vantage Sector Performance
+      operationId: queryTimeSeries
+      summary: Alpha Vantage Query Stock Time Series
       description: >-
-        This API returns the realtime and historical sector performances
-        calculated from S&P500 incumbents.
+        Retrieve intraday or daily/weekly/monthly stock time series data. Use the
+        function parameter to select TIME_SERIES_INTRADAY, TIME_SERIES_DAILY,
+        TIME_SERIES_DAILY_ADJUSTED, TIME_SERIES_WEEKLY, or TIME_SERIES_MONTHLY.
+      tags:
+        - Stock Time Series
       parameters:
         - name: function
           in: query
+          required: true
+          description: API function to call
           schema:
             type: string
-          example: SECTOR
+            enum:
+              - TIME_SERIES_INTRADAY
+              - TIME_SERIES_DAILY
+              - TIME_SERIES_DAILY_ADJUSTED
+              - TIME_SERIES_WEEKLY
+              - TIME_SERIES_WEEKLY_ADJUSTED
+              - TIME_SERIES_MONTHLY
+              - TIME_SERIES_MONTHLY_ADJUSTED
+              - GLOBAL_QUOTE
+              - SYMBOL_SEARCH
+              - MARKET_STATUS
+              - OVERVIEW
+              - NEWS_SENTIMENT
+              - SMA
+              - EMA
+              - MACD
+              - RSI
+              - BBANDS
+              - CURRENCY_EXCHANGE_RATE
+              - REAL_GDP
+              - UNEMPLOYMENT
+              - CPI
+          example: TIME_SERIES_DAILY
+        - name: symbol
+          in: query
+          required: false
+          description: Stock ticker symbol (required for most functions)
+          schema:
+            type: string
+          example: IBM
+        - name: interval
+          in: query
+          required: false
+          description: Time interval for intraday or indicator data
+          schema:
+            type: string
+            enum:
+              - 1min
+              - 5min
+              - 15min
+              - 30min
+              - 60min
+              - daily
+              - weekly
+              - monthly
+              - quarterly
+              - annual
+          example: 5min
+        - name: outputsize
+          in: query
+          required: false
+          description: Amount of data to return
+          schema:
+            type: string
+            enum:
+              - compact
+              - full
+            default: compact
+          example: compact
+        - name: datatype
+          in: query
+          required: false
+          description: Output format
+          schema:
+            type: string
+            enum:
+              - json
+              - csv
+            default: json
+          example: json
+        - name: time_period
+          in: query
+          required: false
+          description: Number of data points to calculate technical indicators
+          schema:
+            type: integer
+            default: 14
+          example: 14
+        - name: series_type
+          in: query
+          required: false
+          description: Price series type for technical indicators
+          schema:
+            type: string
+            enum:
+              - close
+              - open
+              - high
+              - low
+            default: close
+          example: close
+        - name: from_currency
+          in: query
+          required: false
+          description: Source currency code for forex/crypto queries
+          schema:
+            type: string
+          example: USD
+        - name: to_currency
+          in: query
+          required: false
+          description: Destination currency code for forex/crypto queries
+          schema:
+            type: string
+          example: JPY
+        - name: tickers
+          in: query
+          required: false
+          description: Comma-separated ticker symbols for news sentiment
+          schema:
+            type: string
+          example: "IBM,AAPL"
+        - name: keywords
+          in: query
+          required: false
+          description: Search keywords for symbol search
+          schema:
+            type: string
+          example: "tencent"
+        - name: limit
+          in: query
+          required: false
+          description: Number of results to return
+          schema:
+            type: integer
+            default: 50
+            maximum: 1000
+          example: 50
+        - name: apikey
+          in: query
+          required: true
+          description: Alpha Vantage API key
+          schema:
+            type: string
+          example: demo
       responses:
         '200':
-          description: Successful response
+          description: Data retrieved successfully
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+              examples:
+                QueryTimeSeries200Example:
+                  summary: Default queryTimeSeries 200 response
+                  x-microcks-default: true
+                  value:
+                    "Meta Data":
+                      "1. Information": "Daily Prices (open, high, low, close) and Volumes"
+                      "2. Symbol": "IBM"
+                      "3. Last Refreshed": "2026-04-18"
+                      "4. Output Size": "Compact"
+                      "5. Time Zone": "US/Eastern"
+                    "Time Series (Daily)":
+                      "2026-04-18":
+                        "1. open": "195.50"
+                        "2. high": "197.30"
+                        "3. low": "194.80"
+                        "4. close": "196.75"
+                        "5. volume": "3500000"
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: query
+      name: apikey
+      description: Alpha Vantage API key passed as apikey query parameter. Get a free key at https://www.alphavantage.co/support/#api-key
+
+  schemas:
+    ApiResponse:
+      title: ApiResponse
+      type: object
+      description: Generic Alpha Vantage API response containing Meta Data and time series or indicator data
+      properties:
+        "Meta Data":
+          type: object
+          description: Metadata about the response including symbol, indicator, and refresh timestamps
+          example:
+            "1. Information": "Daily Prices (open, high, low, close) and Volumes"
+            "2. Symbol": "IBM"
+            "3. Last Refreshed": "2026-04-18"
+
+    TimeSeriesData:
+      title: TimeSeriesData
+      type: object
+      description: Stock OHLCV time series data point
+      properties:
+        open:
+          type: string
+          description: Opening price for the period
+          example: "195.50"
+        high:
+          type: string
+          description: Highest price for the period
+          example: "197.30"
+        low:
+          type: string
+          description: Lowest price for the period
+          example: "194.80"
+        close:
+          type: string
+          description: Closing price for the period
+          example: "196.75"
+        volume:
+          type: string
+          description: Trading volume for the period
+          example: "3500000"
+
+    GlobalQuote:
+      title: GlobalQuote
+      type: object
+      description: Latest real-time stock quote data
+      properties:
+        symbol:
+          type: string
+          description: Stock ticker symbol
+          example: IBM
+        open:
+          type: string
+          description: Opening price for the day
+          example: "195.50"
+        high:
+          type: string
+          description: Intraday high price
+          example: "197.30"
+        low:
+          type: string
+          description: Intraday low price
+          example: "194.80"
+        price:
+          type: string
+          description: Latest trade price
+          example: "196.75"
+        volume:
+          type: string
+          description: Volume of shares traded
+          example: "3500000"
+        latestTradingDay:
+          type: string
+          format: date
+          description: Most recent trading day
+          example: "2026-04-18"
+        previousClose:
+          type: string
+          description: Previous day's closing price
+          example: "194.90"
+        change:
+          type: string
+          description: Price change from previous close
+          example: "1.85"
+        changePercent:
+          type: string
+          description: Percentage change from previous close
+          example: "0.9493%"
+
+    CompanyOverview:
+      title: CompanyOverview
+      type: object
+      description: Company fundamental data including financial ratios and business description
+      properties:
+        Symbol:
+          type: string
+          description: Stock ticker symbol
+          example: IBM
+        Name:
+          type: string
+          description: Company name
+          example: "International Business Machines"
+        Description:
+          type: string
+          description: Company business description
+          example: "International Business Machines Corporation..."
+        Exchange:
+          type: string
+          description: Stock exchange listing
+          example: NYSE
+        Currency:
+          type: string
+          description: Trading currency code
+          example: USD
+        Country:
+          type: string
+          description: Country of incorporation
+          example: USA
+        Sector:
+          type: string
+          description: Business sector
+          example: Technology
+        Industry:
+          type: string
+          description: Industry classification
+          example: "Information Technology Services"
+        MarketCapitalization:
+          type: string
+          description: Total market capitalization in USD
+          example: "180000000000"
+        PERatio:
+          type: string
+          description: Price-to-earnings ratio
+          example: "22.50"
+        EPS:
+          type: string
+          description: Earnings per share (TTM)
+          example: "8.75"
+        DividendYield:
+          type: string
+          description: Annual dividend yield as decimal
+          example: "0.0320"
+        Beta:
+          type: string
+          description: Beta coefficient relative to S&P 500
+          example: "0.85"
+
+    NewsArticle:
+      title: NewsArticle
+      type: object
+      description: News article with sentiment analysis scores
+      properties:
+        title:
+          type: string
+          description: Article headline
+          example: "IBM Reports Strong Q1 Results"
+        url:
+          type: string
+          format: uri
+          description: Article URL
+          example: "https://example.com/ibm-q1"
+        timePublished:
+          type: string
+          description: Publication timestamp in YYYYMMDDTHHMMSS format
+          example: "20260419T100000"
+        overallSentimentScore:
+          type: number
+          format: double
+          description: Sentiment score from -1 (bearish) to +1 (bullish)
+          example: 0.35
+        overallSentimentLabel:
+          type: string
+          description: Human-readable sentiment label
+          enum:
+            - Bearish
+            - Somewhat-Bearish
+            - Neutral
+            - Somewhat-Bullish
+            - Bullish
+          example: "Somewhat-Bullish"
+
+    ExchangeRate:
+      title: ExchangeRate
+      type: object
+      description: Real-time currency exchange rate between two currencies
+      properties:
+        fromCurrencyCode:
+          type: string
+          description: Source currency ISO code
+          example: USD
+        fromCurrencyName:
+          type: string
+          description: Source currency full name
+          example: "United States Dollar"
+        toCurrencyCode:
+          type: string
+          description: Destination currency ISO code
+          example: JPY
+        toCurrencyName:
+          type: string
+          description: Destination currency full name
+          example: "Japanese Yen"
+        exchangeRate:
+          type: string
+          description: Current exchange rate
+          example: "154.850000"
+        lastRefreshed:
+          type: string
+          description: Timestamp of last data refresh
+          example: "2026-04-19 10:00:00"
+        timeZone:
+          type: string
+          description: Time zone of the refresh timestamp
+          example: UTC
+        bidPrice:
+          type: string
+          description: Current bid price
+          example: "154.845000"
+        askPrice:
+          type: string
+          description: Current ask price
+          example: "154.855000"
+
+    EconomicDataPoint:
+      title: EconomicDataPoint
+      type: object
+      description: A single economic indicator data point
+      properties:
+        date:
+          type: string
+          format: date
+          description: Date of the data point
+          example: "2026-01-01"
+        value:
+          type: string
+          description: Indicator value for the period
+          example: "28500.5"
+
+    ErrorResponse:
+      title: ErrorResponse
+      type: object
+      description: Error or rate limit response from Alpha Vantage
+      properties:
+        Note:
+          type: string
+          description: API rate limit or usage note
+          example: "Thank you for using Alpha Vantage! Our standard API rate limit is 25 requests per day."
+        Information:
+          type: string
+          description: Premium endpoint or invalid request information
+          example: "The premium endpoint selected is not within your current plan."
+        "Error Message":
+          type: string
+          description: Error message for invalid parameters
+          example: "Invalid API call. Please retry or visit the documentation."

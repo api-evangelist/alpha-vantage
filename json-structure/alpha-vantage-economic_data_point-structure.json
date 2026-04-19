@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://www.alphavantage.co/structures/alpha-vantage-economic_data_point-structure.json",
+  "title": "EconomicDataPoint",
+  "type": "object",
+  "description": "A single economic indicator data point",
+  "properties": {
+    "date": {
+      "type": "xs:string",
+      "description": "Date of the data point"
+    },
+    "value": {
+      "type": "xs:string",
+      "description": "Indicator value for the period"
+    }
+  }
+}

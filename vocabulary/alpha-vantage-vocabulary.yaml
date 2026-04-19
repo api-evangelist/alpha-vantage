@@ -1,0 +1,139 @@
+name: Alpha Vantage Vocabulary
+description: Controlled vocabulary for Alpha Vantage financial market data API concepts
+version: 1.0.0
+resources:
+  - name: TimeSeriesData
+    description: Stock OHLCV time series data point for a specific period
+    properties:
+      - open
+      - high
+      - low
+      - close
+      - volume
+  - name: GlobalQuote
+    description: Latest real-time price quote for a stock symbol
+    properties:
+      - symbol
+      - price
+      - change
+      - changePercent
+      - volume
+      - latestTradingDay
+  - name: CompanyOverview
+    description: Fundamental data including financials, ratios, and business description
+    properties:
+      - Symbol
+      - Name
+      - Sector
+      - Industry
+      - MarketCapitalization
+      - PERatio
+      - EPS
+      - DividendYield
+      - Beta
+  - name: NewsArticle
+    description: News article with AI-computed sentiment analysis score
+    properties:
+      - title
+      - url
+      - timePublished
+      - overallSentimentScore
+      - overallSentimentLabel
+  - name: ExchangeRate
+    description: Real-time currency pair exchange rate
+    properties:
+      - fromCurrencyCode
+      - toCurrencyCode
+      - exchangeRate
+      - bidPrice
+      - askPrice
+  - name: EconomicDataPoint
+    description: A single data point for a US economic indicator
+    properties:
+      - date
+      - value
+enumerations:
+  timeSeries:
+    description: Available time series functions for stock data
+    values:
+      - value: TIME_SERIES_INTRADAY
+        description: Intraday price data at 1min, 5min, 15min, 30min, or 60min intervals
+      - value: TIME_SERIES_DAILY
+        description: Daily OHLCV data for 20+ years of history
+      - value: TIME_SERIES_DAILY_ADJUSTED
+        description: Daily adjusted OHLCV accounting for splits and dividends
+      - value: TIME_SERIES_WEEKLY
+        description: Weekly OHLCV data
+      - value: TIME_SERIES_MONTHLY
+        description: Monthly OHLCV data
+      - value: GLOBAL_QUOTE
+        description: Latest real-time price and volume quote
+  outputsize:
+    description: Controls the amount of historical data returned
+    values:
+      - value: compact
+        description: Latest 100 data points
+      - value: full
+        description: Full 20+ years of historical data
+  sentimentLabel:
+    description: Human-readable sentiment classification labels
+    values:
+      - value: Bearish
+        description: Very negative sentiment (score <= -0.35)
+      - value: Somewhat-Bearish
+        description: Mildly negative sentiment (-0.35 < score <= -0.15)
+      - value: Neutral
+        description: Neutral sentiment (-0.15 < score < 0.15)
+      - value: Somewhat-Bullish
+        description: Mildly positive sentiment (0.15 <= score < 0.35)
+      - value: Bullish
+        description: Very positive sentiment (score >= 0.35)
+  economicIndicators:
+    description: Available US economic indicator functions
+    values:
+      - value: REAL_GDP
+        description: Real Gross Domestic Product in billions of dollars
+      - value: REAL_GDP_PER_CAPITA
+        description: Real GDP per capita in dollars
+      - value: TREASURY_YIELD
+        description: US Treasury yield for various maturities
+      - value: FEDERAL_FUNDS_RATE
+        description: US Federal Funds effective rate
+      - value: CPI
+        description: Consumer Price Index for all urban consumers
+      - value: INFLATION
+        description: Annual inflation rate as percentage
+      - value: RETAIL_SALES
+        description: US monthly retail and food services sales
+      - value: UNEMPLOYMENT
+        description: US monthly unemployment rate
+      - value: NONFARM_PAYROLL
+        description: US monthly total nonfarm employees
+  technicalIndicators:
+    description: Available technical analysis functions
+    values:
+      - value: SMA
+        description: Simple Moving Average
+      - value: EMA
+        description: Exponential Moving Average
+      - value: MACD
+        description: Moving Average Convergence/Divergence
+      - value: RSI
+        description: Relative Strength Index
+      - value: BBANDS
+        description: Bollinger Bands
+      - value: STOCH
+        description: Stochastic Oscillator
+      - value: ADX
+        description: Average Directional Movement Index
+      - value: OBV
+        description: On Balance Volume
+personas:
+  - name: Quantitative Analyst
+    description: Financial professional using market data for algorithmic trading models
+  - name: Retail Investor
+    description: Individual investor using stock data and sentiment for portfolio decisions
+  - name: Financial Application Developer
+    description: Developer integrating market data into fintech apps or trading platforms
+  - name: Data Scientist
+    description: Researcher using Alpha Vantage data for machine learning and financial modeling

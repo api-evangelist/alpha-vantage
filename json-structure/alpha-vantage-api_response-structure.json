@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://www.alphavantage.co/structures/alpha-vantage-api_response-structure.json",
+  "title": "ApiResponse",
+  "type": "object",
+  "description": "Generic Alpha Vantage API response containing Meta Data and time series or indicator data",
+  "properties": {
+    "Meta Data": {
+      "type": "object",
+      "description": "Metadata about the response including symbol, indicator, and refresh timestamps"
+    }
+  }
+}

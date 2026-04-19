@@ -1,55 +1,143 @@
 aid: alpha-vantage
 url: >-
-  https://raw.githubusercontent.com/api-search/alpha-vantage/refs/heads/main/apis.yml
-apis:
-  - aid: alpha-vantage:alpha-vantage
-    name: Alpha Vantage
-    tags:
-      - Financial
-      - Market Data
-      - Stocks
-    humanURL: https://www.alphavantage.co
-    properties:
-      - url: https://www.alphavantage.co
-        type: Documentation
-      - url: properties/alpha-vantage-openapi.yml
-        type: OpenAPI
-    description: >-
-      Alpha Vantage is a financial technology company that provides API access to
-      stock market data, allowing developers and investors to easily access and integrate
-      real-time and historical financial information into their applications and trading
-      strategies. With a vast array of financial data including stock prices, technical
-      indicators, and fundamental analysis metrics, Alpha Vantage enables users to
-      make informed investment decisions and enhance their market analysis capabilities.
+  https://raw.githubusercontent.com/api-evangelist/alpha-vantage/refs/heads/main/apis.yml
 name: Alpha Vantage
 tags:
   - Financial
   - Market Data
+  - Stocks
+  - Technical Indicators
+  - Economic Data
+  - Sentiment Analysis
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-access: 3rd-Party
+description: >-
+  Alpha Vantage is a financial data platform providing real-time and historical
+  market data for stocks, options, cryptocurrencies, forex, commodities, and
+  economic indicators. The API supports 50+ technical indicators, fundamental
+  data, Alpha Intelligence sentiment analysis, and earnings data, all accessed
+  through a single query endpoint using function-based routing.
+created: '2024-11-07'
+modified: '2026-04-19'
+specificationVersion: '0.19'
+apis:
+  - aid: alpha-vantage:market-data-api
+    name: Alpha Vantage Market Data API
+    description: >-
+      Real-time and historical stock market data API supporting time series,
+      global quotes, symbol search, fundamental data, technical indicators,
+      forex/crypto exchange rates, economic indicators, and news sentiment
+      analysis via function-based query parameter routing.
+    humanURL: https://www.alphavantage.co/documentation/
+    baseURL: https://www.alphavantage.co
+    tags:
+      - Financial
+      - Market Data
+      - Stocks
+      - Technical Indicators
+      - Economic Data
+      - Sentiment Analysis
+    properties:
+      - type: Documentation
+        url: https://www.alphavantage.co/documentation/
+      - type: Portal
+        url: https://www.alphavantage.co/
+      - type: OpenAPI
+        url: openapi/alpha-vantage-openapi.yml
+      - type: JSONSchema
+        url: json-schema/alpha-vantage-global_quote-schema.json
+      - type: JSONStructure
+        url: json-structure/alpha-vantage-global_quote-structure.json
+      - type: JSONLD
+        url: json-ld/alpha-vantage-context.jsonld
+      - type: Example
+        url: examples/alpha-vantage-global_quote-example.json
+      - type: NaftikoCapability
+        url: capabilities/shared/market-data.yaml
+
 common:
   - url: https://www.alphavantage.co/
-    name: Alpha Vantage
-    type: Portal
-    description: >-
-      'Alpha Vantage provides realtime and historical financial market data
-      through a set of powerful and developer-friendly data APIs and
-      spreadsheets.'
+    type: Website
+  - url: https://www.alphavantage.co/documentation/
+    type: Documentation
   - url: https://www.alphavantage.co/support/#support
-    name: Alpha Vantage Support
     type: Support
-    description: The support page for the API.
-created: '2024-11-07T00:00:00.000Z'
-modified: '2026-03-16'
-position: Consumer
-description: >-
-  Alpha Vantage is a financial data platform that provides real-time and historical
-  market data for stocks, cryptocurrencies, and forex. They offer a wide range of
-  financial data and analytics tools to help investors and traders make informed decisions.
-  With their easy-to-use API, users can access up-to-date market data, technical indicators,
-  and fundamental data to analyze market trends and develop trading strategies.
+  - url: https://www.alphavantage.co/support/#api-key
+    type: SignUp
+  - url: https://www.alphavantage.co/premium/
+    type: Pricing
+  - url: rules/alpha-vantage-spectral-rules.yml
+    type: SpectralRules
+  - url: vocabulary/alpha-vantage-vocabulary.yaml
+    type: Vocabulary
+  - url: capabilities/financial-data-analytics.yaml
+    type: NaftikoCapability
+  - type: Features
+    data:
+      - name: Stock Time Series
+        description: >-
+          Intraday (1min to 60min), daily, weekly, and monthly OHLCV stock price
+          data for 20+ years of history with compact and full output modes.
+      - name: Real-Time Quotes
+        description: >-
+          Global quote endpoint for latest price, volume, change, and change
+          percentage for any listed equity symbol.
+      - name: Technical Indicators
+        description: >-
+          50+ technical analysis functions including SMA, EMA, MACD, RSI,
+          Bollinger Bands, Stochastic, ADX, OBV, and more.
+      - name: Fundamental Data
+        description: >-
+          Company overview with financial ratios, earnings, income statements,
+          balance sheets, cash flow, and ETF holdings data.
+      - name: Alpha Intelligence Sentiment
+        description: >-
+          AI-powered news sentiment analysis for stocks, crypto, and forex with
+          bearish/bullish scoring on recent and historical articles.
+      - name: Forex and Crypto
+        description: >-
+          Real-time and historical exchange rates for 100+ currencies and
+          cryptocurrencies including intraday, daily, weekly, and monthly data.
+      - name: Economic Indicators
+        description: >-
+          US macroeconomic data including Real GDP, CPI, unemployment, federal
+          funds rate, treasury yields, nonfarm payroll, and retail sales.
+      - name: Options Data
+        description: >-
+          Real-time options chains, put-call ratios, and volume-to-OI ratios
+          for US equity options markets.
+  - type: UseCases
+    data:
+      - name: Algorithmic Trading
+        description: >-
+          Build quantitative trading systems using real-time price feeds,
+          technical indicators, and sentiment signals from Alpha Vantage.
+      - name: Portfolio Analytics
+        description: >-
+          Analyze portfolio holdings using fundamental data, earnings estimates,
+          and historical price data for investment decision support.
+      - name: Financial Application Development
+        description: >-
+          Integrate market data into fintech apps, wealth management platforms,
+          or stock screeners using the Alpha Vantage API.
+      - name: Macro Economic Research
+        description: >-
+          Monitor US economic indicators for investment thesis development and
+          macroeconomic trend analysis.
+  - type: Integrations
+    data:
+      - name: Python
+        description: >-
+          Python integration using alpha_vantage library or direct requests
+          to the REST API with pandas DataFrame support.
+      - name: JavaScript
+        description: >-
+          Node.js and browser JavaScript integration for real-time market data
+          in web applications and trading dashboards.
+      - name: Spreadsheets
+        description: >-
+          Google Sheets and Excel integration via Alpha Vantage spreadsheet
+          add-ons for non-technical financial analysis.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
-specificationVersion: '0.19'

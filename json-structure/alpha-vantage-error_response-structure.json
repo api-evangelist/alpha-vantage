@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://www.alphavantage.co/structures/alpha-vantage-error_response-structure.json",
+  "title": "ErrorResponse",
+  "type": "object",
+  "description": "Error or rate limit response from Alpha Vantage",
+  "properties": {
+    "Note": {
+      "type": "xs:string",
+      "description": "API rate limit or usage note"
+    },
+    "Information": {
+      "type": "xs:string",
+      "description": "Premium endpoint or invalid request information"
+    },
+    "Error Message": {
+      "type": "xs:string",
+      "description": "Error message for invalid parameters"
+    }
+  }
+}
