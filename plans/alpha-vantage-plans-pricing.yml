@@ -5,37 +5,202 @@ provider: Alpha Vantage
 providerId: alpha-vantage
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
-- Fintech
-- Market Data
-- Stocks
-- FX
-- Free
-- Plans
-description: Placeholder plans/pricing artifact for Alpha Vantage. Replace with real published pricing once
-  the pipeline researches the provider's plans page.
-notes: Initial scaffold — plans/pricing have not yet been reconciled.
+  - Fintech
+  - Market Data
+  - Plans
+description: >-
+  Alpha Vantage offers a free tier (25 requests per day, 5 per minute) and premium monthly or annual
+  subscriptions ranging from $49.99/month (75 rpm) to $249.99/month (1,200 rpm), plus custom plans
+  for higher volume. Annual plans are billed at roughly 10x monthly (two months free).
 sources:
-- https://www.alphavantage.co/
+  - https://www.alphavantage.co/premium/
+  - https://www.alphavantage.co/support/
 plans:
-- id: alpha-vantage-default
-  name: To Be Reconciled
-  type: enterprise
-  description: Initial scaffold; replace with provider plan tiers once pricing is reconciled.
-  entries:
-  - label: API Access
-    name: api_access
-    type: flat
-    metric: varies
-    limit: -1
-    timeFrame: usage
-    geo: global
-    unit: 1
-    price: see https://www.alphavantage.co/
-    userMultiplied: false
-  elements:
-  - name: Pending Reconciliation
+  - id: alpha-vantage-free
+    name: Free
+    type: freemium
+    description: Free tier - 25 API requests per day, 5 requests per minute, claim free key with email.
+    entries:
+      - label: Daily quota
+        name: free_daily
+        type: quota
+        metric: request
+        limit: 25
+        timeFrame: day
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Rate limit
+        name: free_rate
+        type: quota
+        metric: requests_per_minute
+        limit: 5
+        timeFrame: minute
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: All standard endpoints
+      - name: 20+ years historical data
+  - id: alpha-vantage-premium-49
+    name: Premium 75 rpm
+    type: subscription
+    description: $49.99/month (or $499/year) for 75 requests per minute, no daily cap.
+    entries:
+      - label: Monthly subscription
+        name: prem75_monthly
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '49.99'
+        userMultiplied: false
+      - label: Rate limit
+        name: prem75_rate
+        type: quota
+        metric: requests_per_minute
+        limit: 75
+        timeFrame: minute
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: No daily limit
+      - name: All premium endpoints
+  - id: alpha-vantage-premium-99
+    name: Premium 150 rpm
+    type: subscription
+    description: $99.99/month for 150 requests per minute.
+    entries:
+      - label: Monthly subscription
+        name: prem150_monthly
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '99.99'
+        userMultiplied: false
+      - label: Rate limit
+        name: prem150_rate
+        type: quota
+        metric: requests_per_minute
+        limit: 150
+        timeFrame: minute
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: No daily limit
+  - id: alpha-vantage-premium-149
+    name: Premium 300 rpm
+    type: subscription
+    description: $149.99/month for 300 requests per minute.
+    entries:
+      - label: Monthly subscription
+        name: prem300_monthly
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '149.99'
+        userMultiplied: false
+      - label: Rate limit
+        name: prem300_rate
+        type: quota
+        metric: requests_per_minute
+        limit: 300
+        timeFrame: minute
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: No daily limit
+  - id: alpha-vantage-premium-199
+    name: Premium 600 rpm
+    type: subscription
+    description: $199.99/month for 600 requests per minute.
+    entries:
+      - label: Monthly subscription
+        name: prem600_monthly
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '199.99'
+        userMultiplied: false
+      - label: Rate limit
+        name: prem600_rate
+        type: quota
+        metric: requests_per_minute
+        limit: 600
+        timeFrame: minute
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: No daily limit
+  - id: alpha-vantage-premium-249
+    name: Premium 1200 rpm
+    type: subscription
+    description: $249.99/month for 1,200 requests per minute.
+    entries:
+      - label: Monthly subscription
+        name: prem1200_monthly
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '249.99'
+        userMultiplied: false
+      - label: Rate limit
+        name: prem1200_rate
+        type: quota
+        metric: requests_per_minute
+        limit: 1200
+        timeFrame: minute
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: No daily limit
+      - name: Premium customer support
+  - id: alpha-vantage-enterprise
+    name: Enterprise
+    type: enterprise
+    description: Custom plan for unlimited rpm and bespoke SLAs - contact sales.
+    entries:
+      - label: Custom pricing
+        name: enterprise_custom
+        type: subscription
+        metric: contract
+        limit: -1
+        timeFrame: contract
+        geo: global
+        unit: 1
+        price: contact sales
+        userMultiplied: false
+    elements:
+      - name: Unlimited throughput
+      - name: Custom SLAs
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com

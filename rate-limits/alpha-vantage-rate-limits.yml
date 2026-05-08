@@ -5,31 +5,59 @@ provider: Alpha Vantage
 providerId: alpha-vantage
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
-- Fintech
-- Market Data
-- Stocks
-- FX
-- Free
-- Rate Limiting
-- Quotas
-- Throttling
-description: Placeholder rate-limit artifact for Alpha Vantage. Replace with real limits once researched.
-notes: Initial scaffold — limits have not yet been reconciled.
+  - Fintech
+  - Market Data
+  - Rate Limiting
+description: >-
+  Alpha Vantage limits its free tier to 25 API requests per day and 5 requests per minute. Premium
+  tiers raise the per-minute cap to 75, 150, 300, 600, or 1,200 requests per minute (no daily cap).
+  Throttled requests return a JSON body with Note or Information indicating the limit, rather than
+  HTTP 429.
 sources:
-- https://www.alphavantage.co/
+  - https://www.alphavantage.co/premium/
+  - https://www.alphavantage.co/support/
 responseCodes:
-  throttled: 429
+  throttled: 200
 limits:
-- name: Default
-  scope: account
-  metric: varies
-  limit: see provider documentation
-  notes: Pending reconciliation.
+  - name: Free
+    scope: api_key
+    metric: requests_per_day
+    limit: 25
+    notes: Free key daily quota.
+  - name: Free per-minute
+    scope: api_key
+    metric: requests_per_minute
+    limit: 5
+    notes: Free key burst limit.
+  - name: Premium 75 rpm
+    scope: api_key
+    metric: requests_per_minute
+    limit: 75
+  - name: Premium 150 rpm
+    scope: api_key
+    metric: requests_per_minute
+    limit: 150
+  - name: Premium 300 rpm
+    scope: api_key
+    metric: requests_per_minute
+    limit: 300
+  - name: Premium 600 rpm
+    scope: api_key
+    metric: requests_per_minute
+    limit: 600
+  - name: Premium 1200 rpm
+    scope: api_key
+    metric: requests_per_minute
+    limit: 1200
 policies:
-- name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+  - name: Soft Throttling
+    description: >-
+      Throttled responses return HTTP 200 with a JSON body containing a Note or Information field;
+      clients must inspect the body, not just the status code.
+  - name: Backoff Strategy
+    description: Implement exponential backoff with jitter when Note/Information is returned.
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
