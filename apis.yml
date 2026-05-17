@@ -1,7 +1,7 @@
 aid: alpha-vantage
 url: https://raw.githubusercontent.com/api-evangelist/alpha-vantage/refs/heads/main/apis.yml
 name: Alpha Vantage
-x-type: company
+kind: company
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Fintech
