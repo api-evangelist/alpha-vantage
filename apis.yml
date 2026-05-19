@@ -4,85 +4,85 @@ name: Alpha Vantage
 kind: company
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Fintech
-  - Market Data
+- Fintech
+- Market Data
+- Stocks
+- FX
+- Crypto
+- Commodities
+- Economic Indicators
+- Technical Indicators
+- Fundamentals
+- News
+- Sentiment
+- Free
+created: '2026-05-08'
+modified: '2026-05-19'
+specificationVersion: '0.19'
+description: Alpha Vantage provides a single REST market-data API at https://www.alphavantage.co/query exposing 100+ functions
+  across stocks (intraday/daily/weekly/monthly time series, global quote), fundamentals (income statement, balance sheet,
+  cash flow, earnings), forex, crypto, commodities, economic indicators, technical indicators (50+ TA functions), Alpha Intelligence
+  (news, sentiment, insider transactions, top gainers/losers), and options data. Authentication is by apikey query parameter;
+  output is JSON or CSV.
+apis:
+- aid: alpha-vantage:market-data-api
+  name: Alpha Vantage Market Data API
+  tags:
   - Stocks
+  - Time Series
+  - Fundamentals
   - FX
   - Crypto
   - Commodities
-  - Economic Indicators
   - Technical Indicators
-  - Fundamentals
+  - Economic Indicators
   - News
   - Sentiment
-  - Free
-created: '2026-05-08'
-modified: '2026-05-08'
-specificationVersion: '0.19'
-description: >-
-  Alpha Vantage provides a single REST market-data API at https://www.alphavantage.co/query
-  exposing 100+ functions across stocks (intraday/daily/weekly/monthly time series, global quote),
-  fundamentals (income statement, balance sheet, cash flow, earnings), forex, crypto, commodities,
-  economic indicators, technical indicators (50+ TA functions), Alpha Intelligence (news, sentiment,
-  insider transactions, top gainers/losers), and options data. Authentication is by apikey query
-  parameter; output is JSON or CSV.
-apis:
-  - aid: alpha-vantage:market-data-api
-    name: Alpha Vantage Market Data API
-    tags:
-      - Stocks
-      - Time Series
-      - Fundamentals
-      - FX
-      - Crypto
-      - Commodities
-      - Technical Indicators
-      - Economic Indicators
-      - News
-      - Sentiment
-      - Options
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    baseURL: https://www.alphavantage.co/query
-    humanURL: https://www.alphavantage.co/documentation/
-    description: >-
-      Single function-style REST endpoint that exposes the full Alpha Vantage catalog. Each call
-      includes a function= query parameter (e.g. TIME_SERIES_INTRADAY, GLOBAL_QUOTE, OVERVIEW,
-      INCOME_STATEMENT, RSI, FX_DAILY, CRYPTO_INTRADAY, NEWS_SENTIMENT, REAL_GDP). 20+ years of
-      historical data, free demo key plus paid premium tiers up to 1,200 requests/min.
-    properties:
-      - type: Documentation
-        url: https://www.alphavantage.co/documentation/
-      - type: Pricing
-        url: https://www.alphavantage.co/premium/
-      - type: OpenAPI
-        url: openapi/alpha-vantage-openapi.yml
-    x-features:
-      - 100+ function-style endpoints behind a single URL
-      - 20+ years historical equity history
-      - 50+ technical indicators (SMA, EMA, MACD, RSI, BBANDS, ADX, etc.)
-      - Fundamentals (income, balance sheet, cash flow, earnings, IPOs)
-      - FX, crypto, commodities, economic indicators
-      - Alpha Intelligence (news, sentiment, insider transactions)
-      - JSON and CSV output
-    x-use-cases:
-      - Build research dashboards spanning equities, FX, and economy
-      - Backtest strategies using free historical data
-      - Add news/sentiment signal to trading models
-common:
-  - type: Portal
-    url: https://www.alphavantage.co/
+  - Options
+  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  baseURL: https://www.alphavantage.co/query
+  humanURL: https://www.alphavantage.co/documentation/
+  description: Single function-style REST endpoint that exposes the full Alpha Vantage catalog. Each call includes a function=
+    query parameter (e.g. TIME_SERIES_INTRADAY, GLOBAL_QUOTE, OVERVIEW, INCOME_STATEMENT, RSI, FX_DAILY, CRYPTO_INTRADAY,
+    NEWS_SENTIMENT, REAL_GDP). 20+ years of historical data, free demo key plus paid premium tiers up to 1,200 requests/min.
+  properties:
   - type: Documentation
     url: https://www.alphavantage.co/documentation/
   - type: Pricing
     url: https://www.alphavantage.co/premium/
-  - type: GitHub
-    url: https://github.com/RomelTorres/alpha_vantage
-  - type: Plans
-    url: plans/alpha-vantage-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/alpha-vantage-rate-limits.yml
-  - type: FinOps
-    url: finops/alpha-vantage-finops.yml
+  - type: OpenAPI
+    url: openapi/alpha-vantage-openapi.yml
+  - type: NaftikoCapability
+    url: capabilities/alpha-vantage-stock-time-series.yaml
+  x-features:
+  - 100+ function-style endpoints behind a single URL
+  - 20+ years historical equity history
+  - 50+ technical indicators (SMA, EMA, MACD, RSI, BBANDS, ADX, etc.)
+  - Fundamentals (income, balance sheet, cash flow, earnings, IPOs)
+  - FX, crypto, commodities, economic indicators
+  - Alpha Intelligence (news, sentiment, insider transactions)
+  - JSON and CSV output
+  x-use-cases:
+  - Build research dashboards spanning equities, FX, and economy
+  - Backtest strategies using free historical data
+  - Add news/sentiment signal to trading models
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/alpha-vantage-inc
+- type: Portal
+  url: https://www.alphavantage.co/
+- type: Documentation
+  url: https://www.alphavantage.co/documentation/
+- type: Pricing
+  url: https://www.alphavantage.co/premium/
+- type: GitHub
+  url: https://github.com/RomelTorres/alpha_vantage
+- type: Plans
+  url: plans/alpha-vantage-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/alpha-vantage-rate-limits.yml
+- type: FinOps
+  url: finops/alpha-vantage-finops.yml
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
