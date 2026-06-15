@@ -1,0 +1,117 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alpha Vantage API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stock Time Series",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Alpha Vantage Query Stock Time Series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.alphavantage.co/query",
+            "params": [
+              {
+                "name": "function",
+                "value": "TIME_SERIES_DAILY",
+                "type": "query",
+                "description": "API function to call"
+              },
+              {
+                "name": "symbol",
+                "value": "IBM",
+                "type": "query",
+                "description": "Stock ticker symbol (required for most functions)"
+              },
+              {
+                "name": "interval",
+                "value": "5min",
+                "type": "query",
+                "description": "Time interval for intraday or indicator data"
+              },
+              {
+                "name": "outputsize",
+                "value": "compact",
+                "type": "query",
+                "description": "Amount of data to return"
+              },
+              {
+                "name": "datatype",
+                "value": "json",
+                "type": "query",
+                "description": "Output format"
+              },
+              {
+                "name": "time_period",
+                "value": "14",
+                "type": "query",
+                "description": "Number of data points to calculate technical indicators"
+              },
+              {
+                "name": "series_type",
+                "value": "close",
+                "type": "query",
+                "description": "Price series type for technical indicators"
+              },
+              {
+                "name": "from_currency",
+                "value": "USD",
+                "type": "query",
+                "description": "Source currency code for forex/crypto queries"
+              },
+              {
+                "name": "to_currency",
+                "value": "JPY",
+                "type": "query",
+                "description": "Destination currency code for forex/crypto queries"
+              },
+              {
+                "name": "tickers",
+                "value": "IBM,AAPL",
+                "type": "query",
+                "description": "Comma-separated ticker symbols for news sentiment"
+              },
+              {
+                "name": "keywords",
+                "value": "tencent",
+                "type": "query",
+                "description": "Search keywords for symbol search"
+              },
+              {
+                "name": "limit",
+                "value": "50",
+                "type": "query",
+                "description": "Number of results to return"
+              },
+              {
+                "name": "apikey",
+                "value": "demo",
+                "type": "query",
+                "description": "Alpha Vantage API key"
+              }
+            ]
+          },
+          "docs": "Retrieve intraday or daily/weekly/monthly stock time series data. Use the function parameter to select TIME_SERIES_INTRADAY, TIME_SERIES_DAILY, TIME_SERIES_DAILY_ADJUSTED, TIME_SERIES_WEEKLY, or TIME_SERIES_MONTHLY."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

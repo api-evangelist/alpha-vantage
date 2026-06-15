@@ -1,0 +1,407 @@
+{
+  "item": [
+    {
+      "id": "0acbf863-54e5-42da-94ca-1f7d61d73931",
+      "name": "Stock Time Series",
+      "description": {
+        "content": "Intraday, daily, weekly, and monthly stock price and volume data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f32f5774-b19c-4ccd-92a6-20cac409f406",
+          "name": "Alpha Vantage Query Stock Time Series",
+          "request": {
+            "name": "Alpha Vantage Query Stock Time Series",
+            "description": {
+              "content": "Retrieve intraday or daily/weekly/monthly stock time series data. Use the function parameter to select TIME_SERIES_INTRADAY, TIME_SERIES_DAILY, TIME_SERIES_DAILY_ADJUSTED, TIME_SERIES_WEEKLY, or TIME_SERIES_MONTHLY.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "function",
+                  "value": "<string>",
+                  "description": "(Required) API function to call"
+                },
+                {
+                  "disabled": false,
+                  "key": "symbol",
+                  "value": "<string>",
+                  "description": "Stock ticker symbol (required for most functions)"
+                },
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "<string>",
+                  "description": "Time interval for intraday or indicator data"
+                },
+                {
+                  "disabled": false,
+                  "key": "outputsize",
+                  "value": "compact",
+                  "description": "Amount of data to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "datatype",
+                  "value": "json",
+                  "description": "Output format"
+                },
+                {
+                  "disabled": false,
+                  "key": "time_period",
+                  "value": "14",
+                  "description": "Number of data points to calculate technical indicators"
+                },
+                {
+                  "disabled": false,
+                  "key": "series_type",
+                  "value": "close",
+                  "description": "Price series type for technical indicators"
+                },
+                {
+                  "disabled": false,
+                  "key": "from_currency",
+                  "value": "<string>",
+                  "description": "Source currency code for forex/crypto queries"
+                },
+                {
+                  "disabled": false,
+                  "key": "to_currency",
+                  "value": "<string>",
+                  "description": "Destination currency code for forex/crypto queries"
+                },
+                {
+                  "disabled": false,
+                  "key": "tickers",
+                  "value": "<string>",
+                  "description": "Comma-separated ticker symbols for news sentiment"
+                },
+                {
+                  "disabled": false,
+                  "key": "keywords",
+                  "value": "<string>",
+                  "description": "Search keywords for symbol search"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) Alpha Vantage API key"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab6473a4-dc6e-4294-a575-70723c477a74",
+              "name": "Data retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "function",
+                      "value": "TIME_SERIES_DAILY"
+                    },
+                    {
+                      "key": "symbol",
+                      "value": "IBM"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "5min"
+                    },
+                    {
+                      "key": "outputsize",
+                      "value": "compact"
+                    },
+                    {
+                      "key": "datatype",
+                      "value": "json"
+                    },
+                    {
+                      "key": "time_period",
+                      "value": "14"
+                    },
+                    {
+                      "key": "series_type",
+                      "value": "close"
+                    },
+                    {
+                      "key": "from_currency",
+                      "value": "USD"
+                    },
+                    {
+                      "key": "to_currency",
+                      "value": "JPY"
+                    },
+                    {
+                      "key": "tickers",
+                      "value": "IBM,AAPL"
+                    },
+                    {
+                      "key": "keywords",
+                      "value": "tencent"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "demo"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Meta Data\": {\n    \"1. Information\": \"Daily Prices (open, high, low, close) and Volumes\",\n    \"2. Symbol\": \"IBM\",\n    \"3. Last Refreshed\": \"2026-04-18\",\n    \"4. Output Size\": \"Compact\",\n    \"5. Time Zone\": \"US/Eastern\"\n  },\n  \"Time Series (Daily)\": {\n    \"2026-04-18\": {\n      \"1. open\": \"195.50\",\n      \"2. high\": \"197.30\",\n      \"3. low\": \"194.80\",\n      \"4. close\": \"196.75\",\n      \"5. volume\": \"3500000\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c382d675-7354-4045-a968-92ec3da58adc",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "function",
+                      "value": "TIME_SERIES_DAILY"
+                    },
+                    {
+                      "key": "symbol",
+                      "value": "IBM"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "5min"
+                    },
+                    {
+                      "key": "outputsize",
+                      "value": "compact"
+                    },
+                    {
+                      "key": "datatype",
+                      "value": "json"
+                    },
+                    {
+                      "key": "time_period",
+                      "value": "14"
+                    },
+                    {
+                      "key": "series_type",
+                      "value": "close"
+                    },
+                    {
+                      "key": "from_currency",
+                      "value": "USD"
+                    },
+                    {
+                      "key": "to_currency",
+                      "value": "JPY"
+                    },
+                    {
+                      "key": "tickers",
+                      "value": "IBM,AAPL"
+                    },
+                    {
+                      "key": "keywords",
+                      "value": "tencent"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "demo"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Note\": \"Thank you for using Alpha Vantage! Our standard API rate limit is 25 requests per day.\",\n  \"Information\": \"The premium endpoint selected is not within your current plan.\",\n  \"Error Message\": \"Invalid API call. Please retry or visit the documentation.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c00ac137-5e4e-4020-893d-7307962a762f",
+      "name": "Market Overview",
+      "description": {
+        "content": "Global quotes, bulk quotes, symbol search, and market status",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "8ffd97db-aa7b-45ca-97de-ce53f3accc45",
+      "name": "Fundamental Data",
+      "description": {
+        "content": "Company financials, earnings, dividends, and ETF data",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "44d29f63-5c46-4331-babb-97105c07373a",
+      "name": "Alpha Intelligence",
+      "description": {
+        "content": "News sentiment, earnings transcripts, and institutional data",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "3120d872-6b3a-453c-8724-df0e5cef48c1",
+      "name": "Technical Indicators",
+      "description": {
+        "content": "SMA, EMA, MACD, RSI, Bollinger Bands, and 50+ other indicators",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "0ecb5320-5019-4a6e-b857-e2fc182d45a3",
+      "name": "Forex and Crypto",
+      "description": {
+        "content": "Currency exchange rates and cryptocurrency data",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "42d86a5d-5944-4bf6-99f5-ce8e22b291d5",
+      "name": "Economic Indicators",
+      "description": {
+        "content": "GDP, unemployment, CPI, treasury yields, and other macro data",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.alphavantage.co",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1fc2ff9c-eeed-4d29-894b-e352637d65fb",
+    "name": "Alpha Vantage API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Alpha Vantage is a financial data platform providing real-time and historical market data for stocks, options, cryptocurrencies, forex, commodities, and economic indicators. The API supports 50+ technical indicators, fundamental data, Alpha Intelligence sentiment analysis, and earnings data, all accessed through a single query endpoint using function-based routing.\n\nContact Support:\n Name: Alpha Vantage Support",
+      "type": "text/plain"
+    }
+  }
+}
