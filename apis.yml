@@ -2,7 +2,7 @@ aid: alpha-vantage
 url: https://raw.githubusercontent.com/api-evangelist/alpha-vantage/refs/heads/main/apis.yml
 name: Alpha Vantage
 kind: company
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Fintech
   - Market Data
@@ -40,7 +40,7 @@ apis:
       - News
       - Sentiment
       - Options
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     baseURL: https://www.alphavantage.co/query
     humanURL: https://www.alphavantage.co/documentation/
     description: >-
