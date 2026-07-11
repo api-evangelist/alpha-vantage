@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/alpha-vantage-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: ApiKey
+  type: apiKey
+  in: query
+  parameter: apikey
+  description: Alpha Vantage API key passed as apikey query parameter. Get a free key at https://www.alphavantage.co/support/#api-key
+  sources:
+  - openapi/alpha-vantage-openapi.yml
