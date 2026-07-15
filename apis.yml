@@ -68,6 +68,8 @@ apis:
       - Backtest strategies using free historical data
       - Add news/sentiment signal to trading models
 common:
+  - type: AgenticAccess
+    url: agentic-access/alpha-vantage-agentic-access.yml
   - type: DomainSecurity
     url: security/alpha-vantage-domain-security.yml
   - type: Authentication
