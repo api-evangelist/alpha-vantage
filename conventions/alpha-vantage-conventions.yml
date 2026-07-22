@@ -1,0 +1,45 @@
+generated: '2026-07-22'
+method: derived
+source: openapi/alpha-vantage-stock-time-series-api-openapi.yml + https://www.alphavantage.co/documentation/
+authentication:
+  style: apiKey query parameter (apikey) on every request; OAuth 2.0 + PKCE on the MCP surface
+  artifact: authentication/alpha-vantage-authentication.yml
+routing:
+  style: function-based routing
+  description: >-
+    A single endpoint (GET https://www.alphavantage.co/query) serves 100+ datasets selected by the
+    required function query parameter (TIME_SERIES_DAILY, OVERVIEW, NEWS_SENTIMENT, SMA, ...);
+    remaining parameters vary per function.
+idempotency:
+  supported: false
+  note: >-
+    The entire API surface is read-only GET requests (naturally idempotent); there is no write surface
+    and no Idempotency-Key contract documented.
+pagination:
+  style: none
+  note: >-
+    No cursor/offset pagination. Result size is controlled per function with outputsize=compact|full
+    (100 points vs full history) and month=YYYY-MM windowing on intraday functions.
+response_formats:
+  default: json
+  datatype_parameter: datatype=json|csv
+field_expansion:
+  supported: false
+request_tracing:
+  request_id_header: none documented
+versioning:
+  scheme: none
+  note: Single stable unversioned endpoint; no version path segment, header, or date-based versioning.
+  artifact: lifecycle/alpha-vantage-lifecycle.yml
+error_envelope:
+  shape: >-
+    HTTP 200 with a JSON body carrying one of three vendor fields: "Error Message" (invalid call),
+    "Note" (rate limit), or "Information" (premium-only endpoint or usage notice). Clients must inspect
+    the body, not the status code.
+  artifact: errors/alpha-vantage-problem-types.yml
+rate_limit_signaling:
+  style: soft throttling
+  note: >-
+    Throttled and quota-exhausted requests return HTTP 200 with Note/Information in the body; there are
+    no X-RateLimit-* headers and no 429. Free tier 25 requests/day and 5/minute; premium 75-1200/minute.
+  artifact: rate-limits/alpha-vantage-rate-limits.yml

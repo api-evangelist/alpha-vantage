@@ -1,0 +1,32 @@
+# Alpha Vantage
+
+> Alpha Vantage provides a single REST market-data API at https://www.alphavantage.co/query exposing 100+ functions across stocks (intraday/daily/weekly/monthly time series, global quote), fundamentals (income statement, balance sheet, cash flow, earnings), forex, crypto, commodities, economic indicators, 50+ technical indicators, Alpha Intelligence (news sentiment, insider transactions, top gainers/losers), and options data. Authentication is an apikey query parameter (free key with lifetime access); output is JSON or CSV. An official, Anthropic-verified MCP server exposes the full surface as 129 tools.
+
+<!-- generated: 2026-07-22 | method: generated | source: apis.yml + repo artifacts (no provider /llms.txt; 404 on 2026-07-22) -->
+
+## APIs
+
+- [Alpha Vantage Documentation](https://www.alphavantage.co/documentation/): Full API reference for every function of GET https://www.alphavantage.co/query
+- [Claim a free API key](https://www.alphavantage.co/support/#api-key): Self-serve signup; the literal key `demo` runs the documented examples
+- [Premium plans](https://www.alphavantage.co/premium/): Rate-limit tiers from 75 to 1,200 requests/minute (free tier: 25/day, 5/minute)
+
+## MCP
+
+- [Alpha Vantage MCP Server](https://mcp.alphavantage.co/): Official remote MCP server at https://mcp.alphavantage.co/mcp (OAuth 2.0 + PKCE; 129 tools)
+- [MCP source code](https://github.com/alphavantage/alpha_vantage_mcp): Official repo; local server via `uvx marketdata-mcp-server YOUR_API_KEY`
+
+## Specs
+
+- [Provider OpenAPI (plugin spec)](https://www.alphavantage.co/OpenAPI_Plugin_Specification.json): Provider-published OpenAPI 3.0.0 for GET /query
+- [Curated OpenAPI](https://raw.githubusercontent.com/api-evangelist/alpha-vantage/refs/heads/main/openapi/alpha-vantage-stock-time-series-api-openapi.yml): API Evangelist-curated OpenAPI with function enum, schemas, and examples
+- [MCP tools/list capture](https://raw.githubusercontent.com/api-evangelist/alpha-vantage/refs/heads/main/mcp/alpha-vantage-mcp-tools.json): All 129 MCP tools with per-tool inputSchema
+- [Tool crosswalk](https://raw.githubusercontent.com/api-evangelist/alpha-vantage/refs/heads/main/mcp/alpha-vantage-tool-crosswalk.yml): Binds every MCP tool to the backing REST operation and function value
+
+## Docs
+
+- [Conventions](https://raw.githubusercontent.com/api-evangelist/alpha-vantage/refs/heads/main/conventions/alpha-vantage-conventions.yml): Function-based routing, soft rate-limit signaling (HTTP 200 + Note/Information), no pagination, read-only surface
+- [Error catalog](https://raw.githubusercontent.com/api-evangelist/alpha-vantage/refs/heads/main/errors/alpha-vantage-problem-types.yml): Vendor error envelope — "Error Message", "Note", "Information" fields on HTTP 200
+- [Rate limits](https://raw.githubusercontent.com/api-evangelist/alpha-vantage/refs/heads/main/rate-limits/alpha-vantage-rate-limits.yml): Free 25/day and 5/minute; premium 75-1,200/minute; throttling returns 200 with a Note body
+- [Authentication profile](https://raw.githubusercontent.com/api-evangelist/alpha-vantage/refs/heads/main/authentication/alpha-vantage-authentication.yml): apikey query parameter (REST) and OAuth 2.0 + PKCE (MCP)
+- [Terms of Service](https://www.alphavantage.co/terms_of_service/)
+- [Privacy Policy](https://www.alphavantage.co/privacy/)

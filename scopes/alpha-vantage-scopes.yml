@@ -1,0 +1,25 @@
+generated: '2026-07-22'
+method: searched
+source: https://mcp.alphavantage.co/.well-known/oauth-authorization-server
+docs: https://mcp.alphavantage.co/
+note: >-
+  The core Alpha Vantage REST API authenticates with an apikey query parameter and has no OAuth scope
+  surface. OAuth applies to the official MCP server (mcp.alphavantage.co), which fronts the API key with
+  an OAuth 2.0 authorization-code + PKCE flow and a single read scope.
+schemes:
+  - name: AlphaVantageMCPOAuth
+    source: well-known/alpha-vantage-mcp-oauth-authorization-server.json
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://mcp.alphavantage.co/authorize
+        tokenUrl: https://mcp.alphavantage.co/token
+        registrationUrl: https://mcp.alphavantage.co/register
+        pkce: S256
+        grant_types: [authorization_code, refresh_token]
+scopes:
+  - scope: alphavantage:read
+    description: Read access to Alpha Vantage market data through the MCP server (the entire surface is read-only)
+    flows: [authorizationCode]
+    sources:
+      - well-known/alpha-vantage-mcp-oauth-authorization-server.json
+      - well-known/alpha-vantage-mcp-oauth-protected-resource.json

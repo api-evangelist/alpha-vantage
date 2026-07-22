@@ -1,0 +1,23 @@
+generated: '2026-07-22'
+method: searched
+source: https://www.alphavantage.co/documentation/
+model: demo-key
+separation: >-
+  Alpha Vantage has no separate sandbox environment or test-vs-live key modes — the free tier itself is
+  the trial surface (25 requests/day, 5 requests/minute against production data). A documented demo key
+  allows executing every example on the documentation page without registering.
+demo_key:
+  value: demo
+  usage: append apikey=demo to any documented example query
+  restrictions: >-
+    The demo key only works for the exact example symbols/parameters shown on the documentation page
+    (e.g. symbol=IBM); other symbols require a claimed (free or premium) key.
+  example: https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo
+free_tier_as_trial:
+  requests_per_day: 25
+  requests_per_minute: 5
+  signup: https://www.alphavantage.co/support/#api-key
+mcp:
+  note: The MCP server accepts the same demo key for documented examples (tools/list is unauthenticated).
+  url: https://mcp.alphavantage.co/mcp
+test_values: []

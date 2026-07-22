@@ -1,0 +1,36 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Alpha Vantage Stock Time Series API
+  version: 1.0.0
+  x-generated: '2026-07-22'
+  x-method: generated
+extends: openapi/alpha-vantage-stock-time-series-api-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist:
+        provider: alpha-vantage
+        artifacts:
+          authentication: authentication/alpha-vantage-authentication.yml
+          conventions: conventions/alpha-vantage-conventions.yml
+          errors: errors/alpha-vantage-problem-types.yml
+          rate-limits: rate-limits/alpha-vantage-rate-limits.yml
+          sandbox: sandbox/alpha-vantage-sandbox.yml
+          mcp: mcp/alpha-vantage-mcp.yml
+          tool-crosswalk: mcp/alpha-vantage-tool-crosswalk.yml
+  - target: $.paths['/query'].get
+    update:
+      x-rate-limit:
+        free: 25 requests/day, 5 requests/minute
+        premium: 75-1200 requests/minute
+        signaling: HTTP 200 with Note/Information body fields (no 429, no X-RateLimit headers)
+      x-error-envelope:
+        fields: ['Error Message', 'Note', 'Information']
+        note: Errors and throttles return HTTP 200; inspect the body.
+      x-mcp-tools:
+        server: https://mcp.alphavantage.co/mcp
+        note: Each function enum value is exposed as an MCP tool of the same name; see mcp/alpha-vantage-tool-crosswalk.yml.
+  - target: $.servers
+    update:
+      - url: https://www.alphavantage.co
+        description: Alpha Vantage API server (single endpoint /query with function-based routing)

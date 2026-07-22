@@ -1,0 +1,35 @@
+generated: '2026-07-22'
+method: derived
+source: openapi/alpha-vantage-stock-time-series-api-openapi.yml + https://www.alphavantage.co/documentation/
+format: vendor
+envelope: >-
+  Alpha Vantage does not use RFC 9457 problem+json or meaningful HTTP error statuses for most failure
+  modes: errors typically arrive as HTTP 200 with a JSON body containing exactly one of the vendor
+  fields below. The OpenAPI additionally declares a 400 for malformed requests.
+problems:
+  - status: 200
+    field: Error Message
+    title: Invalid API call
+    detail: Returned when the function/symbol/parameters are invalid or malformed.
+    example: Invalid API call. Please retry or visit the documentation (https://www.alphavantage.co/documentation/) for TIME_SERIES_DAILY.
+    remediation: Check the function name and required parameters against the documentation.
+    source_operation: openapi/alpha-vantage-stock-time-series-api-openapi.yml#queryTimeSeries
+  - status: 200
+    field: Note
+    title: Rate limit reached
+    detail: Returned when the per-minute or per-day quota for the API key is exhausted (soft throttling).
+    example: Thank you for using Alpha Vantage! Our standard API rate limit is 25 requests per day.
+    remediation: Back off with jitter; upgrade to a premium plan for 75-1200 requests/minute.
+    source_operation: openapi/alpha-vantage-stock-time-series-api-openapi.yml#queryTimeSeries
+  - status: 200
+    field: Information
+    title: Premium endpoint or usage notice
+    detail: Returned when a premium-only function or entitlement is requested with a free key.
+    example: The premium endpoint selected is not within your current plan.
+    remediation: Subscribe at https://www.alphavantage.co/premium/ or drop the premium entitlement parameter.
+    source_operation: openapi/alpha-vantage-stock-time-series-api-openapi.yml#queryTimeSeries
+  - status: 400
+    title: Invalid request parameters
+    detail: Declared in the OpenAPI for structurally invalid requests.
+    schema: '#/components/schemas/ErrorResponse'
+    source_operation: openapi/alpha-vantage-stock-time-series-api-openapi.yml#queryTimeSeries

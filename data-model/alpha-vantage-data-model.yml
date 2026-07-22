@@ -1,0 +1,49 @@
+generated: '2026-07-22'
+method: derived
+source: json-schema/ + openapi/alpha-vantage-stock-time-series-api-openapi.yml
+note: >-
+  Alpha Vantage is a read-only market-data API keyed almost entirely by ticker symbol (equities/ETFs),
+  currency code (FX/crypto), or series name (commodities/economic indicators). Entities below mirror the
+  captured json-schema/ artifacts; relationships are join-by-symbol, not id-reference links.
+entities:
+  - name: TimeSeriesData
+    schema: json-schema/alpha-vantage-time_series_data-schema.json
+    key: symbol + interval + timestamp
+  - name: GlobalQuote
+    schema: json-schema/alpha-vantage-global_quote-schema.json
+    key: symbol
+  - name: CompanyOverview
+    schema: json-schema/alpha-vantage-company_overview-schema.json
+    key: symbol
+  - name: ExchangeRate
+    schema: json-schema/alpha-vantage-exchange_rate-schema.json
+    key: from_currency + to_currency
+  - name: NewsArticle
+    schema: json-schema/alpha-vantage-news_article-schema.json
+    key: url + time_published
+  - name: EconomicDataPoint
+    schema: json-schema/alpha-vantage-economic_data_point-schema.json
+    key: indicator + date
+  - name: ApiResponse
+    schema: json-schema/alpha-vantage-api_response-schema.json
+    note: Generic envelope (Meta Data + series map) wrapping time series and indicator payloads
+  - name: ErrorResponse
+    schema: json-schema/alpha-vantage-error_response-schema.json
+    note: Vendor error envelope (Error Message / Note / Information)
+relationships:
+  - from: GlobalQuote
+    to: TimeSeriesData
+    type: has_many
+    via: symbol
+  - from: CompanyOverview
+    to: TimeSeriesData
+    type: has_many
+    via: symbol
+  - from: CompanyOverview
+    to: GlobalQuote
+    type: has_one
+    via: symbol
+  - from: NewsArticle
+    to: CompanyOverview
+    type: belongs_to
+    via: ticker_sentiment[].ticker

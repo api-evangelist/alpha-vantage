@@ -1,0 +1,28 @@
+generated: '2026-07-22'
+method: searched
+source: https://mcp.alphavantage.co/
+status: published
+server:
+  name: alphavantage
+  transport: http
+  url: https://mcp.alphavantage.co/mcp
+  docs: https://mcp.alphavantage.co/
+  source_code: https://github.com/alphavantage/alpha_vantage_mcp
+  registry_listing: Anthropic-verified connector in the Claude Connectors directory
+  local:
+    package: marketdata-mcp-server
+    registry: pypi
+    install: uvx marketdata-mcp-server YOUR_API_KEY
+auth:
+  recommended: OAuth 2.0 authorization code + PKCE (RFC 8414 metadata at /.well-known/oauth-authorization-server); the authorization page collects the Alpha Vantage API key
+  legacy: API key in URL query (https://mcp.alphavantage.co/mcp?apikey=YOUR_API_KEY) — documented as deprecated
+  scopes:
+    - alphavantage:read
+tools_count: 129
+tools_file: alpha-vantage-mcp-tools.json
+tools_note: >-
+  Full tools/list captured live from https://mcp.alphavantage.co/mcp (JSON-RPC tools/list, 2026-07-22)
+  including per-tool inputSchema, annotations (readOnlyHint: true across the surface), and outputSchema.
+  Tools map 1:1 to Alpha Vantage REST function values (TIME_SERIES_INTRADAY ... HT_PHASOR) plus utility
+  tools (PING, ADD_TWO_NUMBERS, TOOL_LIST, TOOL_GET, TOOL_CALL) and index endpoints (INDEX_DATA,
+  INDEX_CATALOG).

@@ -1,0 +1,40 @@
+generated: '2026-07-22'
+method: derived
+source: openapi/ + well-known/ + live probes 2026-07-22
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: MCP server publishes RFC 8414 authorization-server metadata (authorization_code + refresh_token, PKCE S256) at mcp.alphavantage.co/.well-known/oauth-authorization-server
+  - id: oauth2-pkce-rfc7636
+    conforms: true
+    evidence: code_challenge_methods_supported [S256] in RFC 8414 metadata
+  - id: oauth2-dynamic-registration-rfc7591
+    conforms: true
+    evidence: registration_endpoint https://mcp.alphavantage.co/register in RFC 8414 metadata
+  - id: oauth2-protected-resource-rfc9728
+    conforms: true
+    evidence: /.well-known/oauth-protected-resource published on mcp.alphavantage.co
+  - id: oidc
+    conforms: false
+    evidence: no openid-configuration on either host; OAuth server is not an OIDC provider
+  - id: mcp
+    conforms: true
+    evidence: official Model Context Protocol server at https://mcp.alphavantage.co/mcp (JSON-RPC tools/list returns 129 tools with inputSchema/annotations/outputSchema)
+  - id: openapi-3
+    conforms: true
+    evidence: provider publishes OpenAPI 3.0.0 at https://www.alphavantage.co/OpenAPI_Plugin_Specification.json (saved as openapi/alpha-vantage-plugin-openapi.json)
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: errors returned as HTTP 200 with vendor Note/Information/"Error Message" fields (see errors/alpha-vantage-problem-types.yml)
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returns 404
+  - id: pagination
+    conforms: false
+    evidence: no cursor/offset pagination; outputsize=compact|full only
+  - id: idempotency-key
+    conforms: false
+    evidence: read-only GET surface; no Idempotency-Key contract
+  - id: json-api
+    conforms: false
+    evidence: vendor-specific response envelopes (Meta Data + series maps)

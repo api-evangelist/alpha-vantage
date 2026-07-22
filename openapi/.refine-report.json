@@ -1,0 +1,14 @@
+{
+  "provider": "alpha-vantage",
+  "sources": [
+    "alpha-vantage-stock-time-series-api-openapi.yml"
+  ],
+  "outputs": [
+    "alpha-vantage-stock-time-series-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,37 @@
+generated: '2026-07-22'
+method: searched
+source: PyPI + npm registry + https://github.com/alphavantage + https://www.alphavantage.co/spreadsheets/
+packages:
+  - language: python
+    registry: pypi
+    name: marketdata-mcp-server
+    url: https://pypi.org/project/marketdata-mcp-server/
+    install: uvx marketdata-mcp-server YOUR_API_KEY
+    official: true
+    kind: mcp-server
+    source_code: https://github.com/alphavantage/alpha_vantage_mcp
+    note: Official Alpha Vantage MCP server for local (stdio) use; documented on https://mcp.alphavantage.co/
+  - language: spreadsheet
+    registry: microsoft-appsource / google-workspace-marketplace
+    name: Alpha Vantage Stock Market Add-on (Excel and Google Sheets)
+    url: https://www.alphavantage.co/spreadsheets/
+    install: install from the Excel or Google Sheets add-on store
+    official: true
+    kind: spreadsheet-addon
+  - language: python
+    registry: pypi
+    name: alpha-vantage
+    url: https://pypi.org/project/alpha-vantage/
+    install: pip install alpha-vantage
+    official: false
+    note: Community Python client by Romel J. Torres (github.com/RomelTorres/alpha_vantage); linked from the repo's apis.yml
+  - language: javascript
+    registry: npm
+    name: alphavantage
+    url: https://www.npmjs.com/package/alphavantage
+    install: npm install alphavantage
+    official: false
+    note: Community JavaScript wrapper ("A simple interface to the Alpha Vantage API")
+notes: >-
+  Alpha Vantage ships no first-party REST SDKs; the official first-party client surfaces are the MCP
+  server package and the spreadsheet add-ons. A large community SDK ecosystem exists across languages.

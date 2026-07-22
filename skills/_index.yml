@@ -1,0 +1,15 @@
+generated: '2026-07-22'
+method: generated
+skills:
+  - file: alpha-vantage-quote-and-history.md
+    name: Get a stock quote and price history
+    api: openapi/alpha-vantage-stock-time-series-api-openapi.yml
+    operations: [queryTimeSeries]
+  - file: alpha-vantage-company-fundamentals.md
+    name: Research company fundamentals
+    api: openapi/alpha-vantage-stock-time-series-api-openapi.yml
+    operations: [queryTimeSeries]
+  - file: alpha-vantage-technical-analysis.md
+    name: Run technical analysis on a ticker
+    api: openapi/alpha-vantage-stock-time-series-api-openapi.yml
+    operations: [queryTimeSeries]

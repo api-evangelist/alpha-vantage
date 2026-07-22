@@ -1,0 +1,1115 @@
+generated: '2026-07-22'
+method: derived
+source: mcp/alpha-vantage-mcp-tools.json + openapi/alpha-vantage-stock-time-series-api-openapi.yml + https://www.alphavantage.co/documentation/
+note: Alpha Vantage exposes one REST operation (GET /query, operationId queryTimeSeries) with function-based routing;
+  every data-bearing MCP tool binds to that operation with function=<tool name>. The tool inputSchema in mcp/alpha-vantage-mcp-tools.json
+  is the authoritative per-function parameter contract (captured live, ungated).
+surfaces:
+  openapi:
+  - openapi/alpha-vantage-stock-time-series-api-openapi.yml
+  - openapi/alpha-vantage-plugin-openapi.json
+  graphql: null
+  mcp:
+    url: https://mcp.alphavantage.co/mcp
+    gated: false
+    note: tools/list returns full schemas without auth (legacy apikey query accepted); tool calls require an API
+      key
+coverage:
+  mcp_tools_total: 129
+  mcp_tools_bound: 124
+  mcp_only: 5
+  rest_operations_total: 1
+  rest_operations_with_tool: 1
+crosswalk:
+- tool: TIME_SERIES_INTRADAY
+  category: core-stock
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: TIME_SERIES_INTRADAY
+  confidence: high
+- tool: TIME_SERIES_DAILY
+  category: core-stock
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: TIME_SERIES_DAILY
+  confidence: high
+- tool: TIME_SERIES_DAILY_ADJUSTED
+  category: core-stock
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: TIME_SERIES_DAILY_ADJUSTED
+  confidence: high
+- tool: TIME_SERIES_WEEKLY
+  category: core-stock
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: TIME_SERIES_WEEKLY
+  confidence: high
+- tool: TIME_SERIES_WEEKLY_ADJUSTED
+  category: core-stock
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: TIME_SERIES_WEEKLY_ADJUSTED
+  confidence: high
+- tool: TIME_SERIES_MONTHLY
+  category: core-stock
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: TIME_SERIES_MONTHLY
+  confidence: high
+- tool: TIME_SERIES_MONTHLY_ADJUSTED
+  category: core-stock
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: TIME_SERIES_MONTHLY_ADJUSTED
+  confidence: high
+- tool: GLOBAL_QUOTE
+  category: core-stock
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: GLOBAL_QUOTE
+  confidence: high
+- tool: REALTIME_BULK_QUOTES
+  category: core-stock
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: REALTIME_BULK_QUOTES
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: SYMBOL_SEARCH
+  category: core-stock
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: SYMBOL_SEARCH
+  confidence: high
+- tool: MARKET_STATUS
+  category: core-stock
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: MARKET_STATUS
+  confidence: high
+- tool: REALTIME_OPTIONS
+  category: options
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: REALTIME_OPTIONS
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: REALTIME_OPTIONS_FMV
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: REALTIME_OPTIONS_FMV
+  confidence: low
+  note: FMV variant of REALTIME_OPTIONS; not documented as a standalone REST function value on the documentation
+    page
+- tool: REALTIME_PUT_CALL_RATIO
+  category: options
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: REALTIME_PUT_CALL_RATIO
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: REALTIME_VOLUME_OPEN_INTEREST_RATIO
+  category: options
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: REALTIME_VOLUME_OPEN_INTEREST_RATIO
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: HISTORICAL_OPTIONS
+  category: options
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: HISTORICAL_OPTIONS
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: HISTORICAL_PUT_CALL_RATIO
+  category: options
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: HISTORICAL_PUT_CALL_RATIO
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: HISTORICAL_VOLUME_OPEN_INTEREST_RATIO
+  category: options
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: HISTORICAL_VOLUME_OPEN_INTEREST_RATIO
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: NEWS_SENTIMENT
+  category: alpha-intelligence
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: NEWS_SENTIMENT
+  confidence: high
+- tool: EARNINGS_CALL_TRANSCRIPT
+  category: alpha-intelligence
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: EARNINGS_CALL_TRANSCRIPT
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: TOP_GAINERS_LOSERS
+  category: alpha-intelligence
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: TOP_GAINERS_LOSERS
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: INSIDER_TRANSACTIONS
+  category: alpha-intelligence
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: INSIDER_TRANSACTIONS
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: INSTITUTIONAL_HOLDINGS
+  category: alpha-intelligence
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: INSTITUTIONAL_HOLDINGS
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: ANALYTICS_FIXED_WINDOW
+  category: alpha-intelligence
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: ANALYTICS_FIXED_WINDOW
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: ANALYTICS_SLIDING_WINDOW
+  category: alpha-intelligence
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: ANALYTICS_SLIDING_WINDOW
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: WTI
+  category: commodities
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: WTI
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: BRENT
+  category: commodities
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: BRENT
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: NATURAL_GAS
+  category: commodities
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: NATURAL_GAS
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: COPPER
+  category: commodities
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: COPPER
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: ALUMINUM
+  category: commodities
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: ALUMINUM
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: WHEAT
+  category: commodities
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: WHEAT
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: CORN
+  category: commodities
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: CORN
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: COTTON
+  category: commodities
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: COTTON
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: SUGAR
+  category: commodities
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: SUGAR
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: COFFEE
+  category: commodities
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: COFFEE
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: ALL_COMMODITIES
+  category: commodities
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: ALL_COMMODITIES
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: GOLD_SILVER_SPOT
+  category: commodities
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: GOLD_SILVER_SPOT
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: GOLD_SILVER_HISTORY
+  category: commodities
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: GOLD_SILVER_HISTORY
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: CURRENCY_EXCHANGE_RATE
+  category: forex
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: CURRENCY_EXCHANGE_RATE
+  confidence: high
+- tool: CRYPTO_INTRADAY
+  category: crypto
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: CRYPTO_INTRADAY
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: DIGITAL_CURRENCY_DAILY
+  category: crypto
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: DIGITAL_CURRENCY_DAILY
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: DIGITAL_CURRENCY_WEEKLY
+  category: crypto
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: DIGITAL_CURRENCY_WEEKLY
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: DIGITAL_CURRENCY_MONTHLY
+  category: crypto
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: DIGITAL_CURRENCY_MONTHLY
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: REAL_GDP
+  category: economic-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: REAL_GDP
+  confidence: high
+- tool: REAL_GDP_PER_CAPITA
+  category: economic-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: REAL_GDP_PER_CAPITA
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: TREASURY_YIELD
+  category: economic-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: TREASURY_YIELD
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: FEDERAL_FUNDS_RATE
+  category: economic-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: FEDERAL_FUNDS_RATE
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: CPI
+  category: economic-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: CPI
+  confidence: high
+- tool: INFLATION
+  category: economic-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: INFLATION
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: RETAIL_SALES
+  category: economic-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: RETAIL_SALES
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: DURABLES
+  category: economic-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: DURABLES
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: UNEMPLOYMENT
+  category: economic-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: UNEMPLOYMENT
+  confidence: high
+- tool: NONFARM_PAYROLL
+  category: economic-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: NONFARM_PAYROLL
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: FX_INTRADAY
+  category: forex
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: FX_INTRADAY
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: FX_DAILY
+  category: forex
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: FX_DAILY
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: FX_WEEKLY
+  category: forex
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: FX_WEEKLY
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: FX_MONTHLY
+  category: forex
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: FX_MONTHLY
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: COMPANY_OVERVIEW
+  category: fundamentals
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: OVERVIEW
+  confidence: high
+  note: MCP tool name COMPANY_OVERVIEW backs REST function=OVERVIEW (renamed on the MCP surface)
+- tool: ETF_PROFILE
+  category: fundamentals
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: ETF_PROFILE
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: DIVIDENDS
+  category: fundamentals
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: DIVIDENDS
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: SPLITS
+  category: fundamentals
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: SPLITS
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: INCOME_STATEMENT
+  category: fundamentals
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: INCOME_STATEMENT
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: BALANCE_SHEET
+  category: fundamentals
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: BALANCE_SHEET
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: CASH_FLOW
+  category: fundamentals
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: CASH_FLOW
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: EARNINGS
+  category: fundamentals
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: EARNINGS
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: EARNINGS_ESTIMATES
+  category: fundamentals
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: EARNINGS_ESTIMATES
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: LISTING_STATUS
+  category: fundamentals
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: LISTING_STATUS
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: EARNINGS_CALENDAR
+  category: fundamentals
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: EARNINGS_CALENDAR
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: IPO_CALENDAR
+  category: fundamentals
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: IPO_CALENDAR
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: SMA
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: SMA
+  confidence: high
+- tool: EMA
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: EMA
+  confidence: high
+- tool: WMA
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: WMA
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: DEMA
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: DEMA
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: TEMA
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: TEMA
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: TRIMA
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: TRIMA
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: KAMA
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: KAMA
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: MAMA
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: MAMA
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: VWAP
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: VWAP
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: T3
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: T3
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: MACD
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: MACD
+  confidence: high
+- tool: MACDEXT
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: MACDEXT
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: STOCH
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: STOCH
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: STOCHF
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: STOCHF
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: RSI
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: RSI
+  confidence: high
+- tool: STOCHRSI
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: STOCHRSI
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: WILLR
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: WILLR
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: ADX
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: ADX
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: ADXR
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: ADXR
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: APO
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: APO
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: PPO
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: PPO
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: MOM
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: MOM
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: BOP
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: BOP
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: CCI
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: CCI
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: CMO
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: CMO
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: ROC
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: ROC
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: ROCR
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: ROCR
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: AROON
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: AROON
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: AROONOSC
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: AROONOSC
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: MFI
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: MFI
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: TRIX
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: TRIX
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: ULTOSC
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: ULTOSC
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: DX
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: DX
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: MINUS_DI
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: MINUS_DI
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: PLUS_DI
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: PLUS_DI
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: MINUS_DM
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: MINUS_DM
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: PLUS_DM
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: PLUS_DM
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: BBANDS
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: BBANDS
+  confidence: high
+- tool: MIDPOINT
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: MIDPOINT
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: MIDPRICE
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: MIDPRICE
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: SAR
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: SAR
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: TRANGE
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: TRANGE
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: ATR
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: ATR
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: NATR
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: NATR
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: AD
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: AD
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: ADOSC
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: ADOSC
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: OBV
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: OBV
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: HT_TRENDLINE
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: HT_TRENDLINE
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: HT_SINE
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: HT_SINE
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: HT_TRENDMODE
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: HT_TRENDMODE
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: HT_DCPERIOD
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: HT_DCPERIOD
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: HT_DCPHASE
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: HT_DCPHASE
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: HT_PHASOR
+  category: technical-indicators
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: HT_PHASOR
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: INDEX_DATA
+  category: market-indices
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: INDEX_DATA
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+- tool: INDEX_CATALOG
+  category: market-indices
+  rest:
+  - queryTimeSeries
+  binding: rest
+  function: INDEX_CATALOG
+  confidence: high
+  note: Documented REST function on alphavantage.co/documentation; not yet enumerated in the captured OpenAPI function
+    enum
+mcp_only:
+- tool: PING
+  reason: MCP server utility/meta tool (health check, tool discovery, dynamic dispatch) with no Alpha Vantage REST
+    function behind it
+- tool: ADD_TWO_NUMBERS
+  reason: MCP server utility/meta tool (health check, tool discovery, dynamic dispatch) with no Alpha Vantage REST
+    function behind it
+- tool: TOOL_LIST
+  reason: MCP server utility/meta tool (health check, tool discovery, dynamic dispatch) with no Alpha Vantage REST
+    function behind it
+- tool: TOOL_GET
+  reason: MCP server utility/meta tool (health check, tool discovery, dynamic dispatch) with no Alpha Vantage REST
+    function behind it
+- tool: TOOL_CALL
+  reason: MCP server utility/meta tool (health check, tool discovery, dynamic dispatch) with no Alpha Vantage REST
+    function behind it
+rest_only: []

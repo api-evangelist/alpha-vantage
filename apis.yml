@@ -2,7 +2,20 @@ aid: alpha-vantage
 url: https://raw.githubusercontent.com/api-evangelist/alpha-vantage/refs/heads/main/apis.yml
 name: Alpha Vantage
 kind: company
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/alpha-vantage.png
 tags:
   - Fintech
   - Market Data
@@ -17,7 +30,7 @@ tags:
   - Sentiment
   - Free
 created: '2026-05-08'
-modified: '2026-05-19'
+modified: '2026-07-22'
 specificationVersion: '0.19'
 description: >-
   Alpha Vantage provides a single REST market-data API at https://www.alphavantage.co/query exposing 100+ functions
@@ -26,47 +39,30 @@ description: >-
   Alpha Intelligence (news, sentiment, insider transactions, top gainers/losers), and options data. Authentication is by
   apikey query parameter; output is JSON or CSV.
 apis:
-  - aid: alpha-vantage:market-data-api
-    name: Alpha Vantage Market Data API
-    tags:
-      - Stocks
-      - Time Series
-      - Fundamentals
-      - FX
-      - Crypto
-      - Commodities
-      - Technical Indicators
-      - Economic Indicators
-      - News
-      - Sentiment
-      - Options
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://www.alphavantage.co/query
-    humanURL: https://www.alphavantage.co/documentation/
-    description: >-
-      Single function-style REST endpoint that exposes the full Alpha Vantage catalog. Each call includes a function=
-      query parameter (e.g. TIME_SERIES_INTRADAY, GLOBAL_QUOTE, OVERVIEW, INCOME_STATEMENT, RSI, FX_DAILY,
-      CRYPTO_INTRADAY, NEWS_SENTIMENT, REAL_GDP). 20+ years of historical data, free demo key plus paid premium tiers up
-      to 1,200 requests/min.
-    properties:
-      - type: Documentation
-        url: https://www.alphavantage.co/documentation/
-      - type: Pricing
-        url: https://www.alphavantage.co/premium/
-      - type: OpenAPI
-        url: openapi/alpha-vantage-openapi.yml
-    x-features:
-      - 100+ function-style endpoints behind a single URL
-      - 20+ years historical equity history
-      - 50+ technical indicators (SMA, EMA, MACD, RSI, BBANDS, ADX, etc.)
-      - Fundamentals (income, balance sheet, cash flow, earnings, IPOs)
-      - FX, crypto, commodities, economic indicators
-      - Alpha Intelligence (news, sentiment, insider transactions)
-      - JSON and CSV output
-    x-use-cases:
-      - Build research dashboards spanning equities, FX, and economy
-      - Backtest strategies using free historical data
-      - Add news/sentiment signal to trading models
+- aid: alpha-vantage:alpha-vantage-stock-time-series-api
+  name: Alpha Vantage Stock Time Series API
+  description: Intraday, daily, weekly, and monthly stock price and volume data
+  humanURL: https://www.alphavantage.co/documentation/
+  baseURL: https://www.alphavantage.co/query
+  tags:
+  - Stock Time Series
+  properties:
+  - type: OpenAPI
+    url: openapi/alpha-vantage-stock-time-series-api-openapi.yml
+  - type: OpenAPI
+    url: openapi/alpha-vantage-plugin-openapi.json
+  - type: Documentation
+    url: https://www.alphavantage.co/documentation/
+  - type: APIReference
+    url: https://www.alphavantage.co/documentation/
+  - type: Pricing
+    url: https://www.alphavantage.co/premium/
+  - type: Examples
+    url: examples/alpha-vantage-global_quote-example.json
+  - type: Examples
+    url: examples/alpha-vantage-time_series_data-example.json
+  - type: Examples
+    url: examples/alpha-vantage-company_overview-example.json
 common:
   - type: AgenticAccess
     url: agentic-access/alpha-vantage-agentic-access.yml
@@ -74,14 +70,62 @@ common:
     url: security/alpha-vantage-domain-security.yml
   - type: Authentication
     url: authentication/alpha-vantage-authentication.yml
+  - type: OAuthScopes
+    url: scopes/alpha-vantage-scopes.yml
+  - type: MCPServer
+    url: mcp/alpha-vantage-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/alpha-vantage-tool-crosswalk.yml
+  - type: WellKnown
+    url: well-known/alpha-vantage-well-known.yml
+  - type: LLMsTxt
+    url: llms/alpha-vantage-llms.txt
+  - type: Overlay
+    url: overlays/alpha-vantage-stock-time-series-api-overlay.yaml
+  - type: Conformance
+    url: conformance/alpha-vantage-conformance.yml
+  - type: ErrorCatalog
+    url: errors/alpha-vantage-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/alpha-vantage-lifecycle.yml
+  - type: Conventions
+    url: conventions/alpha-vantage-conventions.yml
+  - type: Sandbox
+    url: sandbox/alpha-vantage-sandbox.yml
+  - type: DataModel
+    url: data-model/alpha-vantage-data-model.yml
+  - type: Packages
+    url: packages/alpha-vantage-packages.yml
+  - type: SDKs
+    url: packages/alpha-vantage-packages.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: Vocabulary
+    url: vocabulary/alpha-vantage-vocabulary.yaml
+  - type: Postman
+    url: collections/alpha-vantage.postman_collection.json
   - type: LinkedIn
     url: https://www.linkedin.com/company/alpha-vantage-inc
   - type: Portal
     url: https://www.alphavantage.co/
   - type: Documentation
     url: https://www.alphavantage.co/documentation/
+  - type: APIReference
+    url: https://www.alphavantage.co/documentation/
+  - type: GettingStarted
+    url: https://www.alphavantage.co/support/
+  - type: Support
+    url: https://www.alphavantage.co/support/#support
+  - type: SignUp
+    url: https://www.alphavantage.co/support/#api-key
+  - type: TermsOfService
+    url: https://www.alphavantage.co/terms_of_service/
+  - type: PrivacyPolicy
+    url: https://www.alphavantage.co/privacy/
   - type: Pricing
     url: https://www.alphavantage.co/premium/
+  - type: GitHubOrganization
+    url: https://github.com/alphavantage
   - type: GitHub
     url: https://github.com/RomelTorres/alpha_vantage
   - type: Plans

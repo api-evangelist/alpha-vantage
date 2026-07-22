@@ -1,0 +1,29 @@
+generated: '2026-07-22'
+method: searched
+source: https://www.alphavantage.co/documentation/ + https://mcp.alphavantage.co/
+versioning:
+  scheme: none
+  current: unversioned
+  note: Single stable endpoint (https://www.alphavantage.co/query); no version segments or headers.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  documented_deprecations:
+    - surface: MCP legacy connection (API key in URL, https://mcp.alphavantage.co/mcp?apikey=KEY)
+      status: deprecated
+      replacement: OAuth 2.0 + PKCE connection at https://mcp.alphavantage.co/mcp
+      source: https://mcp.alphavantage.co/
+sla:
+  url: null
+  note: No published SLA; free keys are advertised with lifetime access.
+status_page: null
+status_page_probes:
+  - url: https://status.alphavantage.co/
+    result: no DNS/connection
+  - url: https://www.alphavantage.co/status/
+    result: 404
+changelog: null
+changelog_probes:
+  - url: https://www.alphavantage.co/changelog/
+    result: 404
+deprecated_operations: []

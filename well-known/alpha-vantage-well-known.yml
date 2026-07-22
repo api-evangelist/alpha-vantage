@@ -1,0 +1,27 @@
+generated: '2026-07-22'
+method: searched
+hosts:
+  - host: https://www.alphavantage.co
+    documents:
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        file: alpha-vantage-ai-plugin.json
+        note: References the provider-published OpenAPI at /OpenAPI_Plugin_Specification.json (saved to openapi/alpha-vantage-plugin-openapi.json)
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+  - host: https://mcp.alphavantage.co
+    documents:
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        file: alpha-vantage-mcp-oauth-authorization-server.json
+        note: RFC 8414 metadata — authorization_code + refresh_token grants, PKCE S256, dynamic client registration, scope alphavantage:read
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+        file: alpha-vantage-mcp-oauth-protected-resource.json
+        note: RFC 9728 protected-resource metadata for the MCP endpoint

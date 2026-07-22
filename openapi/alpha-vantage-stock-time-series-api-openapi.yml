@@ -1,0 +1,238 @@
+openapi: 3.0.3
+info:
+  title: Alpha Vantage Stock Time Series API
+  description: Alpha Vantage is a financial data platform providing real-time and historical market data for stocks, options, cryptocurrencies, forex, commodities, and economic indicators. The API supports 50+ technical indicators, fundamental data, Alpha Intelligence sentiment analysis, and earnings data, all accessed through a single query endpoint using function-based routing.
+  version: 1.0.0
+  contact:
+    name: Alpha Vantage Support
+    url: https://www.alphavantage.co/support/
+  x-generated-from: documentation
+servers:
+- url: https://www.alphavantage.co
+  description: Alpha Vantage API server
+security:
+- ApiKey: []
+tags:
+- name: Stock Time Series
+  description: Intraday, daily, weekly, and monthly stock price and volume data
+paths:
+  /query:
+    get:
+      operationId: queryTimeSeries
+      summary: Alpha Vantage Query Stock Time Series
+      description: Retrieve intraday or daily/weekly/monthly stock time series data. Use the function parameter to select TIME_SERIES_INTRADAY, TIME_SERIES_DAILY, TIME_SERIES_DAILY_ADJUSTED, TIME_SERIES_WEEKLY, or TIME_SERIES_MONTHLY.
+      tags:
+      - Stock Time Series
+      parameters:
+      - name: function
+        in: query
+        required: true
+        description: API function to call
+        schema:
+          type: string
+          enum:
+          - TIME_SERIES_INTRADAY
+          - TIME_SERIES_DAILY
+          - TIME_SERIES_DAILY_ADJUSTED
+          - TIME_SERIES_WEEKLY
+          - TIME_SERIES_WEEKLY_ADJUSTED
+          - TIME_SERIES_MONTHLY
+          - TIME_SERIES_MONTHLY_ADJUSTED
+          - GLOBAL_QUOTE
+          - SYMBOL_SEARCH
+          - MARKET_STATUS
+          - OVERVIEW
+          - NEWS_SENTIMENT
+          - SMA
+          - EMA
+          - MACD
+          - RSI
+          - BBANDS
+          - CURRENCY_EXCHANGE_RATE
+          - REAL_GDP
+          - UNEMPLOYMENT
+          - CPI
+        example: TIME_SERIES_DAILY
+      - name: symbol
+        in: query
+        required: false
+        description: Stock ticker symbol (required for most functions)
+        schema:
+          type: string
+        example: IBM
+      - name: interval
+        in: query
+        required: false
+        description: Time interval for intraday or indicator data
+        schema:
+          type: string
+          enum:
+          - 1min
+          - 5min
+          - 15min
+          - 30min
+          - 60min
+          - daily
+          - weekly
+          - monthly
+          - quarterly
+          - annual
+        example: 5min
+      - name: outputsize
+        in: query
+        required: false
+        description: Amount of data to return
+        schema:
+          type: string
+          enum:
+          - compact
+          - full
+          default: compact
+        example: compact
+      - name: datatype
+        in: query
+        required: false
+        description: Output format
+        schema:
+          type: string
+          enum:
+          - json
+          - csv
+          default: json
+        example: json
+      - name: time_period
+        in: query
+        required: false
+        description: Number of data points to calculate technical indicators
+        schema:
+          type: integer
+          default: 14
+        example: 14
+      - name: series_type
+        in: query
+        required: false
+        description: Price series type for technical indicators
+        schema:
+          type: string
+          enum:
+          - close
+          - open
+          - high
+          - low
+          default: close
+        example: close
+      - name: from_currency
+        in: query
+        required: false
+        description: Source currency code for forex/crypto queries
+        schema:
+          type: string
+        example: USD
+      - name: to_currency
+        in: query
+        required: false
+        description: Destination currency code for forex/crypto queries
+        schema:
+          type: string
+        example: JPY
+      - name: tickers
+        in: query
+        required: false
+        description: Comma-separated ticker symbols for news sentiment
+        schema:
+          type: string
+        example: IBM,AAPL
+      - name: keywords
+        in: query
+        required: false
+        description: Search keywords for symbol search
+        schema:
+          type: string
+        example: tencent
+      - name: limit
+        in: query
+        required: false
+        description: Number of results to return
+        schema:
+          type: integer
+          default: 50
+          maximum: 1000
+        example: 50
+      - name: apikey
+        in: query
+        required: true
+        description: Alpha Vantage API key
+        schema:
+          type: string
+        example: demo
+      responses:
+        '200':
+          description: Data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+              examples:
+                QueryTimeSeries200Example:
+                  summary: Default queryTimeSeries 200 response
+                  x-microcks-default: true
+                  value:
+                    Meta Data:
+                      1. Information: Daily Prices (open, high, low, close) and Volumes
+                      2. Symbol: IBM
+                      3. Last Refreshed: '2026-04-18'
+                      4. Output Size: Compact
+                      5. Time Zone: US/Eastern
+                    Time Series (Daily):
+                      '2026-04-18':
+                        1. open: '195.50'
+                        2. high: '197.30'
+                        3. low: '194.80'
+                        4. close: '196.75'
+                        5. volume: '3500000'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ApiResponse:
+      title: ApiResponse
+      type: object
+      description: Generic Alpha Vantage API response containing Meta Data and time series or indicator data
+      properties:
+        Meta Data:
+          type: object
+          description: Metadata about the response including symbol, indicator, and refresh timestamps
+          example:
+            1. Information: Daily Prices (open, high, low, close) and Volumes
+            2. Symbol: IBM
+            3. Last Refreshed: '2026-04-18'
+    ErrorResponse:
+      title: ErrorResponse
+      type: object
+      description: Error or rate limit response from Alpha Vantage
+      properties:
+        Note:
+          type: string
+          description: API rate limit or usage note
+          example: Thank you for using Alpha Vantage! Our standard API rate limit is 25 requests per day.
+        Information:
+          type: string
+          description: Premium endpoint or invalid request information
+          example: The premium endpoint selected is not within your current plan.
+        Error Message:
+          type: string
+          description: Error message for invalid parameters
+          example: Invalid API call. Please retry or visit the documentation.
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: query
+      name: apikey
+      description: Alpha Vantage API key passed as apikey query parameter. Get a free key at https://www.alphavantage.co/support/#api-key
