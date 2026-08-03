@@ -1,0 +1,131 @@
+{
+  "info": {
+    "_postman_id": "80d0c0d3-07a3-4566-8019-31d140088812",
+    "name": "Alpha Vantage API",
+    "description": "This is an API specification for the Alpha Vantage API, which provides various financial data.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:09:12.000Z",
+    "updatedAt": "2026-07-28T10:09:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-80d0c0d3-07a3-4566-8019-31d140088812"
+  },
+  "item": [
+    {
+      "name": "query",
+      "item": [
+        {
+          "name": "Fetches financial data",
+          "id": "ed5bf71d-bc56-4601-b956-95a07fbbcd42",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/query?function=BALANCE_SHEET&symbol=<string>&apikey=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "query"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The function to be performed by the API",
+                  "key": "function",
+                  "value": "BALANCE_SHEET"
+                },
+                {
+                  "description": "(Required) The symbol of the equity you're interested in (used with equity-related functions).",
+                  "key": "symbol",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Your Alpha Vantage API key",
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Invokes the 'query' function of the Alpha Vantage API to fetch specific financial data. It's essential to provide both the 'function' and 'symbol' parameters. The 'function' parameter specifies the type of financial data (e.g., 'OVERVIEW', 'INCOME_STATEMENT', 'BALANCE_SHEET', or 'CASH_FLOW'), and the 'symbol' parameter indicates the equity of interest. The model must include both parameters in the request to ensure accurate data retrieval."
+          },
+          "response": [
+            {
+              "id": "fff83251-9d0e-4cb4-aa20-ec3a0eb57860",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/query?function=BALANCE_SHEET&symbol=<string>&apikey=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The function to be performed by the API",
+                      "key": "function",
+                      "value": "BALANCE_SHEET"
+                    },
+                    {
+                      "description": "(Required) The symbol of the equity you're interested in (used with equity-related functions).",
+                      "key": "symbol",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Your Alpha Vantage API key",
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Ut_0a4\": \"anim id elit\"\n}",
+              "createdAt": "2026-07-28T10:09:12.000Z",
+              "updatedAt": "2026-07-28T10:09:12.000Z",
+              "uid": "35240-fff83251-9d0e-4cb4-aa20-ec3a0eb57860"
+            }
+          ],
+          "createdAt": "2026-07-28T10:09:12.000Z",
+          "updatedAt": "2026-07-28T10:09:12.000Z",
+          "uid": "35240-ed5bf71d-bc56-4601-b956-95a07fbbcd42"
+        }
+      ],
+      "id": "5f5ea190-e831-4de2-821b-56055aa4c738",
+      "createdAt": "2026-07-28T10:09:12.000Z",
+      "updatedAt": "2026-07-28T10:09:12.000Z",
+      "uid": "35240-5f5ea190-e831-4de2-821b-56055aa4c738"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.alphavantage.co/query"
+    }
+  ]
+}

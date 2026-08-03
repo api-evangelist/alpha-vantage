@@ -1,0 +1,355 @@
+{
+  "info": {
+    "_postman_id": "b5387754-7a7a-4fee-a1d6-6b9410781ad0",
+    "name": "Alpha Vantage Stock Time Series API",
+    "description": "Alpha Vantage is a financial data platform providing real-time and historical market data for stocks, options, cryptocurrencies, forex, commodities, and economic indicators. The API supports 50+ technical indicators, fundamental data, Alpha Intelligence sentiment analysis, and earnings data, all accessed through a single query endpoint using function-based routing.\n\nContact Support:\n Name: Alpha Vantage Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:09:10.000Z",
+    "updatedAt": "2026-07-28T10:09:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b5387754-7a7a-4fee-a1d6-6b9410781ad0"
+  },
+  "item": [
+    {
+      "name": "query",
+      "item": [
+        {
+          "name": "Alpha Vantage Query Stock Time Series",
+          "id": "784f7d0e-47b5-4f80-917c-9ea52e3e89ae",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/query?function=EMA&symbol=<string>&interval=15min&outputsize=compact&datatype=json&time_period=14&series_type=close&from_currency=<string>&to_currency=<string>&tickers=<string>&keywords=<string>&limit=50&apikey=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "query"
+              ],
+              "query": [
+                {
+                  "description": "(Required) API function to call",
+                  "key": "function",
+                  "value": "EMA"
+                },
+                {
+                  "description": "Stock ticker symbol (required for most functions)",
+                  "key": "symbol",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Time interval for intraday or indicator data",
+                  "key": "interval",
+                  "value": "15min"
+                },
+                {
+                  "description": "Amount of data to return",
+                  "key": "outputsize",
+                  "value": "compact"
+                },
+                {
+                  "description": "Output format",
+                  "key": "datatype",
+                  "value": "json"
+                },
+                {
+                  "description": "Number of data points to calculate technical indicators",
+                  "key": "time_period",
+                  "value": "14"
+                },
+                {
+                  "description": "Price series type for technical indicators",
+                  "key": "series_type",
+                  "value": "close"
+                },
+                {
+                  "description": "Source currency code for forex/crypto queries",
+                  "key": "from_currency",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Destination currency code for forex/crypto queries",
+                  "key": "to_currency",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated ticker symbols for news sentiment",
+                  "key": "tickers",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Search keywords for symbol search",
+                  "key": "keywords",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Number of results to return",
+                  "key": "limit",
+                  "value": "50"
+                },
+                {
+                  "description": "(Required) Alpha Vantage API key",
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve intraday or daily/weekly/monthly stock time series data. Use the function parameter to select TIME_SERIES_INTRADAY, TIME_SERIES_DAILY, TIME_SERIES_DAILY_ADJUSTED, TIME_SERIES_WEEKLY, or TIME_SERIES_MONTHLY."
+          },
+          "response": [
+            {
+              "id": "6c71aed2-6383-4524-9bab-5498af2241e1",
+              "name": "Data retrieved successfully",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/query?function=EMA&symbol=<string>&interval=15min&outputsize=compact&datatype=json&time_period=14&series_type=close&from_currency=<string>&to_currency=<string>&tickers=<string>&keywords=<string>&limit=50&apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) API function to call",
+                      "key": "function",
+                      "value": "EMA"
+                    },
+                    {
+                      "description": "Stock ticker symbol (required for most functions)",
+                      "key": "symbol",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Time interval for intraday or indicator data",
+                      "key": "interval",
+                      "value": "15min"
+                    },
+                    {
+                      "description": "Amount of data to return",
+                      "key": "outputsize",
+                      "value": "compact"
+                    },
+                    {
+                      "description": "Output format",
+                      "key": "datatype",
+                      "value": "json"
+                    },
+                    {
+                      "description": "Number of data points to calculate technical indicators",
+                      "key": "time_period",
+                      "value": "14"
+                    },
+                    {
+                      "description": "Price series type for technical indicators",
+                      "key": "series_type",
+                      "value": "close"
+                    },
+                    {
+                      "description": "Source currency code for forex/crypto queries",
+                      "key": "from_currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Destination currency code for forex/crypto queries",
+                      "key": "to_currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated ticker symbols for news sentiment",
+                      "key": "tickers",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search keywords for symbol search",
+                      "key": "keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results to return",
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "description": "(Required) Alpha Vantage API key",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Meta Data\": {}\n}",
+              "createdAt": "2026-07-28T10:09:11.000Z",
+              "updatedAt": "2026-07-28T10:09:11.000Z",
+              "uid": "35240-6c71aed2-6383-4524-9bab-5498af2241e1"
+            },
+            {
+              "id": "07a0484a-7e1b-4cee-88e3-048db9e82529",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/query?function=EMA&symbol=<string>&interval=15min&outputsize=compact&datatype=json&time_period=14&series_type=close&from_currency=<string>&to_currency=<string>&tickers=<string>&keywords=<string>&limit=50&apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) API function to call",
+                      "key": "function",
+                      "value": "EMA"
+                    },
+                    {
+                      "description": "Stock ticker symbol (required for most functions)",
+                      "key": "symbol",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Time interval for intraday or indicator data",
+                      "key": "interval",
+                      "value": "15min"
+                    },
+                    {
+                      "description": "Amount of data to return",
+                      "key": "outputsize",
+                      "value": "compact"
+                    },
+                    {
+                      "description": "Output format",
+                      "key": "datatype",
+                      "value": "json"
+                    },
+                    {
+                      "description": "Number of data points to calculate technical indicators",
+                      "key": "time_period",
+                      "value": "14"
+                    },
+                    {
+                      "description": "Price series type for technical indicators",
+                      "key": "series_type",
+                      "value": "close"
+                    },
+                    {
+                      "description": "Source currency code for forex/crypto queries",
+                      "key": "from_currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Destination currency code for forex/crypto queries",
+                      "key": "to_currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated ticker symbols for news sentiment",
+                      "key": "tickers",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search keywords for symbol search",
+                      "key": "keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results to return",
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "description": "(Required) Alpha Vantage API key",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Note\": \"<string>\",\n  \"Information\": \"<string>\",\n  \"Error Message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:09:11.000Z",
+              "updatedAt": "2026-07-28T10:09:11.000Z",
+              "uid": "35240-07a0484a-7e1b-4cee-88e3-048db9e82529"
+            }
+          ],
+          "createdAt": "2026-07-28T10:09:11.000Z",
+          "updatedAt": "2026-07-28T10:09:11.000Z",
+          "uid": "35240-784f7d0e-47b5-4f80-917c-9ea52e3e89ae"
+        }
+      ],
+      "id": "0f800a38-438a-4895-ad5f-ea29351a9acf",
+      "createdAt": "2026-07-28T10:09:11.000Z",
+      "updatedAt": "2026-07-28T10:09:11.000Z",
+      "uid": "35240-0f800a38-438a-4895-ad5f-ea29351a9acf"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.alphavantage.co"
+    }
+  ]
+}
