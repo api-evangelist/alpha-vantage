@@ -31,7 +31,7 @@ tags:
   - Free
 created: '2026-05-08'
 modified: '2026-07-22'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 description: >-
   Alpha Vantage provides a single REST market-data API at https://www.alphavantage.co/query exposing 100+ functions
   across stocks (intraday/daily/weekly/monthly time series, global quote), fundamentals (income statement, balance
