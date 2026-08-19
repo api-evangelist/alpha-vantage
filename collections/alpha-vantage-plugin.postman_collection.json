@@ -1,0 +1,123 @@
+{
+  "item": [
+    {
+      "id": "a7d182a5-e91a-42c2-a1c3-3126745b2abb",
+      "name": "Fetches financial data",
+      "request": {
+        "name": "Fetches financial data",
+        "description": {
+          "content": "Invokes the 'query' function of the Alpha Vantage API to fetch specific financial data. It's essential to provide both the 'function' and 'symbol' parameters. The 'function' parameter specifies the type of financial data (e.g., 'OVERVIEW', 'INCOME_STATEMENT', 'BALANCE_SHEET', or 'CASH_FLOW'), and the 'symbol' parameter indicates the equity of interest. The model must include both parameters in the request to ensure accurate data retrieval.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "query"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "function",
+              "value": "<string>",
+              "description": "(Required) The function to be performed by the API"
+            },
+            {
+              "disabled": false,
+              "key": "symbol",
+              "value": "<string>",
+              "description": "(Required) The symbol of the equity you're interested in (used with equity-related functions)."
+            },
+            {
+              "disabled": false,
+              "key": "apikey",
+              "value": "<string>",
+              "description": "(Required) Your Alpha Vantage API key"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "5f389fa6-9396-46ef-8ab4-a359ff9392fb",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "function",
+                  "value": "<string>"
+                },
+                {
+                  "key": "symbol",
+                  "value": "<string>"
+                },
+                {
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"key_0\": 2828,\n  \"key_1\": 9643,\n  \"key_2\": 4830\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.alphavantage.co/query",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "227e9055-cd53-4f0f-9234-077ed8bbc070",
+    "name": "Alpha Vantage API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is an API specification for the Alpha Vantage API, which provides various financial data.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alpha Vantage API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fetches financial data",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://www.alphavantage.co/query/query",
+        "params": [
+          {
+            "name": "function",
+            "value": "",
+            "type": "query",
+            "description": "The function to be performed by the API"
+          },
+          {
+            "name": "symbol",
+            "value": "",
+            "type": "query",
+            "description": "The symbol of the equity you're interested in (used with equity-related functions)."
+          },
+          {
+            "name": "apikey",
+            "value": "",
+            "type": "query",
+            "description": "Your Alpha Vantage API key"
+          }
+        ]
+      },
+      "docs": "Invokes the 'query' function of the Alpha Vantage API to fetch specific financial data. It's essential to provide both the 'function' and 'symbol' parameters. The 'function' parameter specifies the type of financial data (e.g., 'OVERVIEW', 'INCOME_STATEMENT', 'BALANCE_SHEET', or 'CASH_FLOW'), and the 'symbol' parameter indicates the equity of interest. The model must include both parameters in the request to ensure accurate data retrieval."
+    }
+  ],
+  "bundled": true
+}
