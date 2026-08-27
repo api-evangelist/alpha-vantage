@@ -49,8 +49,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/alpha-vantage-stock-time-series-api-openapi.yml
-  - type: OpenAPI
-    url: openapi/alpha-vantage-plugin-openapi.json
   - type: Documentation
     url: https://www.alphavantage.co/documentation/
   - type: APIReference
@@ -63,6 +61,16 @@ apis:
     url: examples/alpha-vantage-time_series_data-example.json
   - type: Examples
     url: examples/alpha-vantage-company_overview-example.json
+- aid: alpha-vantage:alpha-vantage-query-api
+  name: Alpha Vantage Query API
+  description: The Query API from Alpha Vantage — 1 operation(s) for query.
+  humanURL: https://www.alphavantage.co/documentation/
+  baseURL: https://www.alphavantage.co/query
+  tags:
+  - Query
+  properties:
+  - type: OpenAPI
+    url: openapi/alpha-vantage-query-api-openapi.yml
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/alpha-vantage/overview
