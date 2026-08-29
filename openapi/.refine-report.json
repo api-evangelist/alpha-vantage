@@ -1,14 +1,18 @@
 {
   "provider": "alpha-vantage",
   "sources": [
+    "alpha-vantage-query-api-openapi.yml",
     "alpha-vantage-stock-time-series-api-openapi.yml"
   ],
   "outputs": [
+    "alpha-vantage-query-api-openapi.yml",
     "alpha-vantage-stock-time-series-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

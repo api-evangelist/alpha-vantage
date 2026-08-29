@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Alpha Vantage Stock Time Series API
   description: Alpha Vantage is a financial data platform providing real-time and historical market data for stocks, options, cryptocurrencies, forex, commodities, and economic indicators. The API supports 50+ technical indicators, fundamental data, Alpha Intelligence sentiment analysis, and earnings data, all accessed through a single query endpoint using function-based routing.
@@ -201,18 +201,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ApiResponse:
-      title: ApiResponse
-      type: object
-      description: Generic Alpha Vantage API response containing Meta Data and time series or indicator data
-      properties:
-        Meta Data:
-          type: object
-          description: Metadata about the response including symbol, indicator, and refresh timestamps
-          example:
-            1. Information: Daily Prices (open, high, low, close) and Volumes
-            2. Symbol: IBM
-            3. Last Refreshed: '2026-04-18'
     ErrorResponse:
       title: ErrorResponse
       type: object
@@ -230,6 +218,18 @@ components:
           type: string
           description: Error message for invalid parameters
           example: Invalid API call. Please retry or visit the documentation.
+    ApiResponse:
+      title: ApiResponse
+      type: object
+      description: Generic Alpha Vantage API response containing Meta Data and time series or indicator data
+      properties:
+        Meta Data:
+          type: object
+          description: Metadata about the response including symbol, indicator, and refresh timestamps
+          example:
+            1. Information: Daily Prices (open, high, low, close) and Volumes
+            2. Symbol: IBM
+            3. Last Refreshed: '2026-04-18'
   securitySchemes:
     ApiKey:
       type: apiKey
