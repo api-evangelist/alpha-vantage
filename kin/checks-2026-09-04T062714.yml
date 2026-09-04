@@ -1,17 +1,17 @@
 ---
 kin_checks:
   slug: alpha-vantage
-  schema_version: 0.17.2
-  scored_at: '2026-09-01'
-  run_ts: 2026-09-01T063623
+  schema_version: 0.18.2
+  scored_at: '2026-09-04'
+  run_ts: 2026-09-04T062714
   note: Actionable checks only (missed + partial). earned/na are every other check
-    in rubric/scoring-0.17.2.yml; counts below let you verify that.
+    in rubric/scoring-0.18.2.yml; counts below let you verify that.
   counts:
-    total: 130
+    total: 132
     earned: 39
     partial: 33
     missed: 33
-    na: 25
+    na: 27
   checks:
   - id: multiple_apis
     status: missed
@@ -85,68 +85,68 @@ kin_checks:
     status: missed
   - id: contract_present
     status: partial
-    earned: 12.5
+    earned: 10.0
   - id: openapi_3_0
     status: partial
-    earned: 1.88
+    earned: 1.5
     detail: 2 of 2 openapi documents pass
   - id: info_complete
     status: partial
-    earned: 1.25
+    earned: 1.0
     detail: 1 of 2 openapi documents pass
   - id: servers_defined
     status: partial
-    earned: 1.88
+    earned: 1.5
     detail: 2 of 2 openapi documents pass
   - id: servers_resolvable
     status: partial
-    earned: 3.13
+    earned: 2.5
   - id: operations_summary_coverage
     status: partial
-    earned: 3.75
+    earned: 3.0
     detail: 2 of 2 openapi documents pass
   - id: operations_description_coverage
     status: partial
-    earned: 3.75
+    earned: 3.0
     detail: 2 of 2 openapi documents pass
   - id: operations_tagged
     status: partial
-    earned: 2.5
+    earned: 2.0
     detail: 2 of 2 openapi documents pass
   - id: operations_operation_ids
     status: partial
-    earned: 1.25
+    earned: 1.0
     detail: 1 of 2 openapi documents pass
   - id: response_coverage
     status: partial
-    earned: 3.13
+    earned: 2.5
     detail: 2 of 2 openapi documents pass
   - id: error_responses_documented
     status: partial
-    earned: 1.25
+    earned: 1.0
     detail: 1 of 2 openapi documents pass
   - id: examples_present
     status: partial
-    earned: 1.25
+    earned: 1.0
   - id: security_schemes_defined
     status: partial
-    earned: 1.25
+    earned: 1.0
     detail: 1 of 2 openapi documents pass
   - id: security_applied
     status: partial
-    earned: 0.94
+    earned: 0.75
     detail: 1 of 2 openapi documents pass
   - id: oauth_flows_current
     status: partial
-    earned: 2.5
+    earned: 2.0
     detail: 2 of 2 openapi documents pass
   - id: credentials_not_in_query
     status: partial
-    earned: 0.94
+    earned: 0.75
     detail: 1 of 2 openapi documents pass
   - id: oauth_scopes_enumerated
     status: partial
-    earned: 2.5
+    earned: 2.0
     detail: 2 of 2 openapi documents pass
   - id: rules_present
     status: partial
