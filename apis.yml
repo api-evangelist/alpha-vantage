@@ -84,6 +84,8 @@ apis:
   - type: OpenAPI
     url: openapi/alpha-vantage-query-api-openapi.yml
 common:
+  - type: Website
+    url: https://www.alphavantage.co/
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/alpha-vantage/overview
   - type: AgenticAccess
