@@ -51,28 +51,6 @@ description: >-
   Alpha Intelligence (news, sentiment, insider transactions, top gainers/losers), and options data. Authentication is by
   apikey query parameter; output is JSON or CSV.
 apis:
-- aid: alpha-vantage:alpha-vantage-stock-time-series-api
-  name: Alpha Vantage Stock Time Series API
-  description: Intraday, daily, weekly, and monthly stock price and volume data
-  humanURL: https://www.alphavantage.co/documentation/
-  baseURL: https://www.alphavantage.co/query
-  tags:
-  - Stock Time Series
-  properties:
-  - type: OpenAPI
-    url: openapi/alpha-vantage-stock-time-series-api-openapi.yml
-  - type: Documentation
-    url: https://www.alphavantage.co/documentation/
-  - type: APIReference
-    url: https://www.alphavantage.co/documentation/
-  - type: Pricing
-    url: https://www.alphavantage.co/premium/
-  - type: Examples
-    url: examples/alpha-vantage-global_quote-example.json
-  - type: Examples
-    url: examples/alpha-vantage-time_series_data-example.json
-  - type: Examples
-    url: examples/alpha-vantage-company_overview-example.json
 - aid: alpha-vantage:alpha-vantage-query-api
   name: Alpha Vantage Query API
   description: The Query API from Alpha Vantage — 1 operation(s) for query.
