@@ -46,3 +46,5 @@ paths:
                 additionalProperties: true
       tags:
       - Query
+      operationId: getQuery
+      x-operation-id-source: derived
