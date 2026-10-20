@@ -1,4 +1,21 @@
 edges:
+- partner_name: Google Workspace (own)
+  partner: google-workspace
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://workspace.google.com/marketplace/app/alpha_vantage_market_data/434809773372
+  mirror_of: google-workspace/integrations/google-workspace-integration-edges.yml
+  apps:
+  - Alpha Vantage Market Data
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Google Workspace app
 - partner_name: MCP Registry
   partner: mcp
   partner_match: register
@@ -14,7 +31,7 @@ edges:
     registered_name: io.github.alphavantage/alpha_vantage_mcp
     register_id: io.github.alphavantage/alpha_vantage_mcp
     detected_by: sweep-agent-tools.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   mcp_registry:
     servers:
     - io.github.alphavantage/alpha_vantage_mcp
@@ -89,23 +106,35 @@ edges:
     builder: 'community (Meltano Hub variant maintainers: airbyte)'
   detected_by: sweep-data-integration.py
   first_seen: '2026-10-18'
-- partner_name: Google Workspace (own)
-  partner: google-workspace
-  partner_match: mirror
-  mirror_match: domain
+- partner_name: AWS Data Exchange
+  partner: amazon-data-exchange
+  partner_match: aggregator
   type: marketplace
-  relationship: platform-app
+  marketplace: amazon-data-exchange-marketplace
+  channel: distribution
+  relationship: distribution-channel
   direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://workspace.google.com/marketplace/app/alpha_vantage_market_data/434809773372
-  mirror_of: google-workspace/integrations/google-workspace-integration-edges.yml
-  apps:
-  - Alpha Vantage Market Data
-  listing_count: 1
-  detected: '2026-10-18'
-  detected_by: mirror-platform-listings.py
-  category: Google Workspace app
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=c3d0a604-a811-4af5-bdba-7a9976bc0d0b
+  category: data product listing
+  contract_reference:
+    register: AWS Data Exchange (AWS Marketplace discovery search, FULFILLMENT_OPTION_TYPE=DATA_EXCHANGE + seller-profile
+      sellerWebsiteUrl)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Alpha Vantage
+    matched_domain: alphavantage.co
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - 20 Years of End-of-Day Stock Data for Top 10 US Companies by Market Cap
+    signal_note: 'participation: the provider lists data products on this marketplace; counts are context'
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+  publisher_verified:
+  - Deployed on AWS
+  - Standard Data Agreement
 generated: '2026-10-14'
 method: searched
 checked:
@@ -114,6 +143,7 @@ checked:
 - https://connectors.airbyte.com/files/registries/v0/oss_registry.json
 - https://github.com/meltano/hub
 - https://registry.modelcontextprotocol.io/v0/servers
+- https://aws.amazon.com/marketplace/search/results?FULFILLMENT_OPTION_TYPE=DATA_EXCHANGE
 source:
 - https://connectors.airbyte.com/files/registries/v0/cloud_registry.json
 - https://connectors.airbyte.com/files/registries/v0/oss_registry.json
